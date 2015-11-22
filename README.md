@@ -1,0 +1,1 @@
+# eslint-plugin-react-native
