@@ -32,7 +32,7 @@ Add `plugins` section and specify ESLint-plugin-React as a plugin.
 ```json
 {
   "plugins": [
-    "react", // (optional)
+    "react", /* (optional) */
     "react-native"
   ]
 }
