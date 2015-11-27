@@ -27,12 +27,12 @@ $ npm install eslint-plugin-react-native
 
 # Configuration
 
-Add `plugins` section and specify ESLint-plugin-React as a plugin.
+Add `plugins` section and specify ESLint-plugin-React (optional) and ESLint-plugin-react-native as a plugin.
 
 ```json
 {
   "plugins": [
-    "react", /* (optional) */
+    "react",
     "react-native"
   ]
 }
