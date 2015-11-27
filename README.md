@@ -1,1 +1,64 @@
-# eslint-plugin-react-native
+
+ESLint plugin for React Native
+==============================
+
+React Native specific linting rules for ESLint. This repository is structured like  (and contains code from) the excellent [eslint-plugin-react](http://github.com/yannickcr/eslint-plugin-react). 
+
+# Installation
+
+Install [ESLint](https://www.github.com/eslint/eslint) either locally or globally.
+
+```sh
+$ npm install eslint
+```
+
+To make most use of this plugin, its recommended to install [eslint-plugin-react](http://github.com/yannickcr/eslint-plugin-react) in addition to [ESLint](https://www.github.com/eslint/eslint). If you installed `ESLint` globally, you have to install eslint-plugin-react globally too. Otherwise, install it locally.
+
+```sh
+$ npm install eslint-plugin-react
+```
+
+Similarly, install eslint-plugin-react-native
+
+
+```sh
+$ npm install eslint-plugin-react-native
+```
+
+# Configuration
+
+Add `plugins` section and specify ESLint-plugin-React as a plugin.
+
+```json
+{
+  "plugins": [
+    "react", // (optional)
+    "react-native"
+  ]
+}
+```
+
+If it is not already the case you must also configure `ESLint` to support JSX.
+
+```json
+{
+  "ecmaFeatures": {
+    "jsx": true
+  }
+}
+```
+
+Finally, enable all of the rules that you would like to use.
+
+```json
+{
+  "rules": {
+    "react/no-unused-styles": 1,
+  }
+}
+```
+
+# List of supported rules
+
+* [no-unused-styles](TODO: docs): Detect StyleSheet rules which are not used in your React components
+
