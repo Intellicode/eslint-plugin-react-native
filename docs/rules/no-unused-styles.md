@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   name: {}
 });
 
-const Hello = React.createClass({',
+const Hello = React.createClass({
   render: function() {
     return <Text textStyle={styles.name}>Hello {this.props.name}</Text>;
   }
