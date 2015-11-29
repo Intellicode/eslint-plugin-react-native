@@ -60,5 +60,5 @@ Finally, enable all of the rules that you would like to use.
 
 # List of supported rules
 
-* [no-unused-styles](TODO: docs): Detect `StyleSheet` rules which are not used in your React components
+* [no-unused-styles](docs/rules/no-unused-styles.md): Detect `StyleSheet` rules which are not used in your React components
 
