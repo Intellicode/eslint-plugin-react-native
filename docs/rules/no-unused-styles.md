@@ -3,7 +3,7 @@ When working on a component over a longer period of time, you could end up with 
 
 The following patterns are considered warnings: 
 
-```
+```js
 const styles = StyleSheet.create({
   text: {}
 });
@@ -16,7 +16,7 @@ const Hello = React.createClass({
 ```
 
 The following patterns are not considered warnings:
-```
+```js
 const styles = StyleSheet.create({
   name: {}
 });
@@ -29,7 +29,7 @@ const Hello = React.createClass({',
 ```
 The most common case.
 
-```
+```js
 const styles = StyleSheet.create({
   text: {}
 });
@@ -44,7 +44,7 @@ const Hello = React.createClass({
 ```
 Style rules referenced in a Style array are marked as used.
 
-```
+```js
 const styles = StyleSheet.create({
   name: {}
 });
@@ -57,7 +57,7 @@ const Hello = React.createClass({',
 ```
 Rules are also marked as used when they are used in tags that contain the word `style`.
 
-```
+```js
 const styles = StyleSheet.create({
   name: {},
   welcome: {}
@@ -75,7 +75,7 @@ const Welcome = React.createClass({
 ```
 Usage is tracked over multiple components in the same file.
 
-```
+```js
 const styles = StyleSheet.create({
   text: {}
 });
