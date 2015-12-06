@@ -53,7 +53,7 @@ Finally, enable all of the rules that you would like to use.
 ```json
 {
   "rules": {
-    "react/no-unused-styles": 1,
+    "react-native/no-unused-styles": 1,
   }
 }
 ```
