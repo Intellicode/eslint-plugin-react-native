@@ -2,7 +2,7 @@
 ESLint plugin for React Native
 ==============================
 
-React Native specific linting rules for ESLint. This repository is structured like  (and contains code from) the excellent [eslint-plugin-react](http://github.com/yannickcr/eslint-plugin-react). 
+React Native specific linting rules for ESLint. This repository is structured like  (and contains code from) the excellent [eslint-plugin-react](http://github.com/yannickcr/eslint-plugin-react).
 
 # Installation
 
@@ -53,7 +53,9 @@ Finally, enable all of the rules that you would like to use.
 ```json
 {
   "rules": {
-    "react-native/no-unused-styles": 1,
+
+    "react-native/no-unused-styles": 2,
+    "react-native/split-platform-components": 2,
   }
 }
 ```
@@ -61,4 +63,4 @@ Finally, enable all of the rules that you would like to use.
 # List of supported rules
 
 * [no-unused-styles](docs/rules/no-unused-styles.md): Detect `StyleSheet` rules which are not used in your React components
-
+* [no-unused-styles](docs/rules/split-platform-components.md): Enforce using platform specific filenames when necessary
