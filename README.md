@@ -53,7 +53,6 @@ Finally, enable all of the rules that you would like to use.
 ```json
 {
   "rules": {
-
     "react-native/no-unused-styles": 2,
     "react-native/split-platform-components": 2,
   }
