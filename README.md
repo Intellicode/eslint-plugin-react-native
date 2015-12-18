@@ -62,4 +62,4 @@ Finally, enable all of the rules that you would like to use.
 # List of supported rules
 
 * [no-unused-styles](docs/rules/no-unused-styles.md): Detect `StyleSheet` rules which are not used in your React components
-* [no-unused-styles](docs/rules/split-platform-components.md): Enforce using platform specific filenames when necessary
+* [split-platform-components](docs/rules/split-platform-components.md): Enforce using platform specific filenames when necessary
