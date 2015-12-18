@@ -117,7 +117,7 @@ ruleTester.run('no-unused-styles', rule, {
       jsx: true
     },
     errors: [{
-      message: 'IOS components should be placed in android files'
+      message: 'IOS components should be placed in ios files'
     }]
   }, {
     code: [
@@ -139,6 +139,8 @@ ruleTester.run('no-unused-styles', rule, {
       jsx: true
     },
     errors: [{
+      message: 'IOS and Android components can\'t be mixed'
+    }, {
       message: 'IOS and Android components can\'t be mixed'
     }]
   }
