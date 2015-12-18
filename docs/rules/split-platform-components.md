@@ -33,7 +33,7 @@ const Hello = React.createClass({
 });
 ```
 
-filename: <any>.js
+Any filename
 ```js
 const React = require('react-native');
 const {
