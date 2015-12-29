@@ -1,7 +1,7 @@
 # Detect unused StyleSheet rules in React components
 When working on a component over a longer period of time, you could end up with unused StyleSheet rules that slipt in over time but are forgotten as you continue to improve your UX/UI design.
 
-The following patterns are considered warnings: 
+The following patterns are considered warnings:
 
 ```js
 const styles = StyleSheet.create({
@@ -52,6 +52,44 @@ const styles = StyleSheet.create({
 const Hello = React.createClass({
   render: function() {
     return <Text textStyle={styles.name}>Hello {this.props.name}</Text>;
+  }
+});
+```
+Style rules referenced in a conditional and logical expressions are marked as used.
+
+```js
+const styles = StyleSheet.create({
+  name: {}
+});
+
+const Hello = React.createClass({
+  getInitialState: function() {
+    return {condition: true};
+  },
+
+  render: function() {
+    return <Text textStyle={[this.state.condition && styles.name]}>
+      Hello {this.props.name}
+    </Text>;
+  }
+});
+```
+
+```js
+const styles = StyleSheet.create({
+  name: {},
+  alternate: {},
+});
+
+const Hello = React.createClass({
+  getInitialState: function() {
+    return {condition: true};
+  },
+
+  render: function() {
+    return <Text textStyle={[this.state.condition ? styles.name : styles.alternate]}>
+      Hello {this.props.name}
+    </Text>;
   }
 });
 ```
