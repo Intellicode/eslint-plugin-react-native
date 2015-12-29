@@ -119,6 +119,45 @@ ruleTester.run('no-unused-styles', rule, {
     code: [
       'const styles = StyleSheet.create({',
       '  text: {}',
+      '});',
+      'const Hello = React.createClass({',
+      '  getInitialState: function() {',
+      '    return { condition: true }; ',
+      '  },',
+      '  render: function() {',
+      '    return <Text style={[this.state.condition && styles.text]}>Hello {this.props.name}</Text>;',
+      '  }',
+      '});'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    ecmaFeatures: {
+      classes: true,
+      jsx: true
+    }
+  }, {
+    code: [
+      'const styles = StyleSheet.create({',
+      '  text: {},',
+      '  text2: {},',
+      '});',
+      'const Hello = React.createClass({',
+      '  getInitialState: function() {',
+      '    return { condition: true }; ',
+      '  },',
+      '  render: function() {',
+      '    return <Text style={[this.state.condition ? styles.text : styles.text2]}>Hello {this.props.name}</Text>;',
+      '  }',
+      '});'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    ecmaFeatures: {
+      classes: true,
+      jsx: true
+    }
+  }, {
+    code: [
+      'const styles = StyleSheet.create({',
+      '  text: {}',
       '})',
     ].join('\n'),
     parser: 'babel-eslint',
