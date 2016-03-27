@@ -5,5 +5,6 @@
     "func-names": 0,
     "object-shorthand": 0,
     "consistent-return": 0,
+    "prefer-template": 0
   }
 }

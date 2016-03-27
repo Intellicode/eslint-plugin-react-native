@@ -9,8 +9,8 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-var rule = require('../../../lib/rules/split-platform-components');
-var RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/split-platform-components');
+const RuleTester = require('eslint').RuleTester;
 
 require('babel-eslint');
 
@@ -18,111 +18,111 @@ require('babel-eslint');
 // Tests
 // ------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
+const ruleTester = new RuleTester();
 ruleTester.run('no-unused-styles', rule, {
 
   valid: [{
     code: [
-      'var React = require(\'react-native\');',
-      'var {',
+      'const React = require(\'react-native\');',
+      'const {',
       '  ActivityIndicatiorIOS,',
       '} = React',
       'const Hello = React.createClass({',
       '  render: function() {',
       '    return <ActivityIndicatiorIOS />;',
       '  }',
-      '});'
+      '});',
     ].join('\n'),
     filename: 'Hello.ios.js',
     parser: 'babel-eslint',
     ecmaFeatures: {
       classes: true,
-      jsx: true
-    }
+      jsx: true,
+    },
   }, {
     code: [
-      'var React = require(\'react-native\');',
-      'var {',
+      'const React = require(\'react-native\');',
+      'const {',
       '  ProgressBarAndroid,',
       '} = React',
       'const Hello = React.createClass({',
       '  render: function() {',
       '    return <ProgressBarAndroid />;',
       '  }',
-      '});'
+      '});',
     ].join('\n'),
     parser: 'babel-eslint',
     filename: 'Hello.android.js',
     ecmaFeatures: {
       classes: true,
-      jsx: true
-    }
+      jsx: true,
+    },
   }, {
     code: [
-      'var React = require(\'react-native\');',
-      'var {',
+      'const React = require(\'react-native\');',
+      'const {',
       '  View,',
       '} = React',
       'const Hello = React.createClass({',
       '  render: function() {',
       '    return <View />;',
       '  }',
-      '});'
+      '});',
     ].join('\n'),
     parser: 'babel-eslint',
     filename: 'Hello.js',
     ecmaFeatures: {
       classes: true,
-      jsx: true
-    }
+      jsx: true,
+    },
   }],
 
   invalid: [{
     code: [
-      'var React = require(\'react-native\');',
-      'var {',
+      'const React = require(\'react-native\');',
+      'const {',
       '  ProgressBarAndroid,',
       '} = React',
       'const Hello = React.createClass({',
       '  render: function() {',
       '    return <ProgressBarAndroid />;',
       '  }',
-      '});'
+      '});',
     ].join('\n'),
     parser: 'babel-eslint',
     filename: 'Hello.js',
     ecmaFeatures: {
       classes: true,
-      jsx: true
+      jsx: true,
     },
     errors: [{
-      message: 'Android components should be placed in android files'
-    }]
+      message: 'Android components should be placed in android files',
+    }],
   }, {
     code: [
-      'var React = require(\'react-native\');',
-      'var {',
+      'const React = require(\'react-native\');',
+      'const {',
       '  ActivityIndicatiorIOS,',
       '} = React',
       'const Hello = React.createClass({',
       '  render: function() {',
       '    return <ActivityIndicatiorIOS />;',
       '  }',
-      '});'
+      '});',
     ].join('\n'),
     parser: 'babel-eslint',
     filename: 'Hello.js',
     ecmaFeatures: {
       classes: true,
-      jsx: true
+      jsx: true,
     },
     errors: [{
-      message: 'IOS components should be placed in ios files'
-    }]
+      message: 'IOS components should be placed in ios files',
+    }],
   }, {
     code: [
-      'var React = require(\'react-native\');',
-      'var {',
+      'const React = require(\'react-native\');',
+      'const {',
       '  ActivityIndicatiorIOS,',
       '  ProgressBarAndroid,',
       '} = React',
@@ -130,18 +130,18 @@ ruleTester.run('no-unused-styles', rule, {
       '  render: function() {',
       '    return <ActivityIndicatiorIOS />;',
       '  }',
-      '});'
+      '});',
     ].join('\n'),
     parser: 'babel-eslint',
     filename: 'Hello.js',
     ecmaFeatures: {
       classes: true,
-      jsx: true
+      jsx: true,
     },
     errors: [{
-      message: 'IOS and Android components can\'t be mixed'
+      message: 'IOS and Android components can\'t be mixed',
     }, {
-      message: 'IOS and Android components can\'t be mixed'
-    }]
-  }
-]});
+      message: 'IOS and Android components can\'t be mixed',
+    }],
+  },
+] });

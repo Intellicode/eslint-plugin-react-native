@@ -8,8 +8,8 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-var rule = require('../../../lib/rules/no-unused-styles');
-var RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-unused-styles');
+const RuleTester = require('eslint').RuleTester;
 
 require('babel-eslint');
 
@@ -17,7 +17,7 @@ require('babel-eslint');
 // Tests
 // ------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
+const ruleTester = new RuleTester();
 ruleTester.run('no-unused-styles', rule, {
 
   valid: [{
@@ -29,13 +29,13 @@ ruleTester.run('no-unused-styles', rule, {
       '  render: function() {',
       '    return <Text textStyle={styles.name}>Hello {this.props.name}</Text>;',
       '  }',
-      '});'
+      '});',
     ].join('\n'),
     parser: 'babel-eslint',
     ecmaFeatures: {
       classes: true,
-      jsx: true
-    }
+      jsx: true,
+    },
   }, {
     code: [
       'const styles = StyleSheet.create({',
@@ -45,13 +45,13 @@ ruleTester.run('no-unused-styles', rule, {
       '  render: function() {',
       '    return <Text style={styles.name}>Hello {this.props.name}</Text>;',
       '  }',
-      '});'
+      '});',
     ].join('\n'),
     parser: 'babel-eslint',
     ecmaFeatures: {
       classes: true,
-      jsx: true
-    }
+      jsx: true,
+    },
   }, {
     code: [
       'const styles = StyleSheet.create({',
@@ -67,13 +67,13 @@ ruleTester.run('no-unused-styles', rule, {
       '  render: function() {',
       '    return <Text style={styles.welcome}>Welcome</Text>;',
       '  }',
-      '});'
+      '});',
     ].join('\n'),
     parser: 'babel-eslint',
     ecmaFeatures: {
       classes: true,
-      jsx: true
-    }
+      jsx: true,
+    },
   }, {
     code: [
       'const styles = StyleSheet.create({',
@@ -86,13 +86,13 @@ ruleTester.run('no-unused-styles', rule, {
       '  render: function() {',
       '    return <Text style={[styles.text, textStyle]}>Hello {this.props.name}</Text>;',
       '  }',
-      '});'
+      '});',
     ].join('\n'),
     parser: 'babel-eslint',
     ecmaFeatures: {
       classes: true,
-      jsx: true
-    }
+      jsx: true,
+    },
   }, {
     code: [
       'const styles = StyleSheet.create({',
@@ -106,15 +106,19 @@ ruleTester.run('no-unused-styles', rule, {
       '    textStyle: Text.propTypes.style,',
       '  },',
       '  render: function() {',
-      '    return <Text style={[styles.text, styles2.text, textStyle]}>Hello {this.props.name}</Text>;',
+      '    return (',
+      '      <Text style={[styles.text, styles2.text, textStyle]}>',
+      '       Hello {this.props.name}',
+      '      </Text>',
+      '     );',
       '  }',
-      '});'
+      '});',
     ].join('\n'),
     parser: 'babel-eslint',
     ecmaFeatures: {
       classes: true,
-      jsx: true
-    }
+      jsx: true,
+    },
   }, {
     code: [
       'const styles = StyleSheet.create({',
@@ -135,13 +139,13 @@ ruleTester.run('no-unused-styles', rule, {
       '      </Text>',
       '    );',
       '  }',
-      '});'
+      '});',
     ].join('\n'),
     parser: 'babel-eslint',
     ecmaFeatures: {
       classes: true,
-      jsx: true
-    }
+      jsx: true,
+    },
   }, {
     code: [
       'const styles = StyleSheet.create({',
@@ -153,15 +157,19 @@ ruleTester.run('no-unused-styles', rule, {
       '    return { condition: true }; ',
       '  },',
       '  render: function() {',
-      '    return <Text style={[this.state.condition ? styles.text : styles.text2]}>Hello {this.props.name}</Text>;',
+      '    return (',
+      '      <Text style={[this.state.condition ? styles.text : styles.text2]}>',
+      '        Hello {this.props.name}',
+      '      </Text>',
+      '    );',
       '  }',
-      '});'
+      '});',
     ].join('\n'),
     parser: 'babel-eslint',
     ecmaFeatures: {
       classes: true,
-      jsx: true
-    }
+      jsx: true,
+    },
   }, {
     code: [
       'const styles = StyleSheet.create({',
@@ -171,8 +179,8 @@ ruleTester.run('no-unused-styles', rule, {
     parser: 'babel-eslint',
     ecmaFeatures: {
       classes: true,
-      jsx: true
-    }
+      jsx: true,
+    },
   }],
 
   invalid: [{
@@ -184,15 +192,15 @@ ruleTester.run('no-unused-styles', rule, {
       '  render: function() {',
       '    return <Text style={styles.b}>Hello {this.props.name}</Text>;',
       '  }',
-      '});'
+      '});',
     ].join('\n'),
     parser: 'babel-eslint',
     ecmaFeatures: {
       classes: true,
-      jsx: true
+      jsx: true,
     },
     errors: [{
-      message: 'Unused style detected: styles.text'
-    }]
-  }
-]});
+      message: 'Unused style detected: styles.text',
+    }],
+  },
+] });
