@@ -173,6 +173,30 @@ ruleTester.run('no-unused-styles', rule, {
   }, {
     code: [
       'const styles = StyleSheet.create({',
+      '    style1: {',
+      '        color: \'red\',',
+      '    },',
+      '    style2: {',
+      '        color: \'blue\',',
+      '    }',
+      '});',
+      'export default class MyComponent extends Component {',
+      '    static propTypes = {',
+      '        isDanger: PropTypes.bool',
+      '    };',
+      '    render() {',
+      '        return <View style={this.props.isDanger ? styles.style1 : styles.style2} />;',
+      '    }',
+      '}',
+    ].join('\n'),
+    parser: 'babel-eslint',
+    ecmaFeatures: {
+      classes: true,
+      jsx: true,
+    },
+  }, {
+    code: [
+      'const styles = StyleSheet.create({',
       '  text: {}',
       '})',
     ].join('\n'),
