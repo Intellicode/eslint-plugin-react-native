@@ -1,24 +1,22 @@
 /* eslint-env mocha */
 'use strict';
 
-var plugin = require('..');
+const plugin = require('..');
 
-var assert = require('assert');
-var fs = require('fs');
-var path = require('path');
+const assert = require('assert');
+const fs = require('fs');
+const path = require('path');
 
-var rules = fs.readdirSync(path.resolve(__dirname, '../lib/rules/'))
-  .map(function(f) {
-    return path.basename(f, '.js');
-  });
+const rules = fs.readdirSync(path.resolve(__dirname, '../lib/rules/'))
+  .map((f) => path.basename(f, '.js'));
 
-var defaultSettings = {
-  'jsx-uses-vars': 1
+const defaultSettings = {
+  'jsx-uses-vars': 1,
 };
 
-describe('all rule files should be exported by the plugin', function() {
-  rules.forEach(function(ruleName) {
-    it('should export ' + ruleName, function() {
+describe('all rule files should be exported by the plugin', () => {
+  rules.forEach((ruleName) => {
+    it('should export ' + ruleName, () => {
       assert.equal(
         plugin.rules[ruleName],
         require(path.join('../lib/rules', ruleName))
@@ -26,15 +24,15 @@ describe('all rule files should be exported by the plugin', function() {
     });
 
     if (defaultSettings.hasOwnProperty(ruleName)) {
-      var val = defaultSettings[ruleName];
-      it('should configure ' + ruleName + ' to ' + val + ' by default', function() {
+      const val = defaultSettings[ruleName];
+      it('should configure ' + ruleName + ' to ' + val + ' by default', () => {
         assert.equal(
           plugin.rulesConfig[ruleName],
           val
         );
       });
     } else {
-      it('should configure ' + ruleName + ' off by default', function() {
+      it('should configure ' + ruleName + ' off by default', () => {
         assert.equal(
           plugin.rulesConfig[ruleName],
           0
