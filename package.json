@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-react-native",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Tom Hastjarjanto <tom@intellicode.nl>",
   "description": "React Native specific linting rules for ESLint",
   "main": "index.js",
