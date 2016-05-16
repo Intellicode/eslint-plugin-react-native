@@ -113,6 +113,20 @@ const tests = {
       code: [
         'const Hello = React.createClass({',
         '  render: function() {',
+        '    return <Text style={{marginLeft: -7, height: +12}}>',
+        '      Hello {this.props.name}',
+        '     </Text>;',
+        '  }',
+        '});',
+      ].join('\n'),
+      errors: [{
+        message: 'Inline style: { marginLeft: -7, height: 12 }',
+      }],
+    },
+    {
+      code: [
+        'const Hello = React.createClass({',
+        '  render: function() {',
         '    return <Text style={[styles.text, {backgroundColor: \'#FFFFFF\'}]}>',
         '      Hello {this.props.name}',
         '     </Text>;',
