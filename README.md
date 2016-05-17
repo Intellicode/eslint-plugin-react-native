@@ -57,6 +57,8 @@ Finally, enable all of the rules that you would like to use.
   "rules": {
     "react-native/no-unused-styles": 2,
     "react-native/split-platform-components": 2,
+    "react-native/no-inline-styles": 2,
+    "react-native/no-color-literals": 2,
   }
 }
 ```
@@ -65,7 +67,8 @@ Finally, enable all of the rules that you would like to use.
 
 * [no-unused-styles](docs/rules/no-unused-styles.md): Detect `StyleSheet` rules which are not used in your React components
 * [split-platform-components](docs/rules/split-platform-components.md): Enforce using platform specific filenames when necessary
-
+* [no-inline-styles](docs/rules/no-inline-styles.md): Detect JSX components with inline styles that contain literal values
+* [no-color-literals](docs/rules/no-color-literals.md): Detect `StyleSheet` rules and inline styles containing color literals instead of variables
 
 [npm-url]: https://npmjs.org/package/eslint-plugin-react-native
 [npm-image]: http://img.shields.io/npm/v/eslint-plugin-react-native.svg?style=flat-square
