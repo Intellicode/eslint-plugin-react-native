@@ -38,6 +38,22 @@ ruleTester.run('no-unused-styles', rule, {
     },
   }, {
     code: [
+      'const Hello = React.createClass({',
+      '  render: function() {',
+      '    return <Text textStyle={styles.name}>Hello {this.props.name}</Text>;',
+      '  }',
+      '});',
+      'const styles = StyleSheet.create({',
+      '  name: {}',
+      '});',
+    ].join('\n'),
+    parser: 'babel-eslint',
+    ecmaFeatures: {
+      classes: true,
+      jsx: true,
+    },
+  }, {
+    code: [
       'const styles = StyleSheet.create({',
       '  name: {}',
       '});',
