@@ -1,4 +1,5 @@
 /* eslint-env mocha */
+/* eslint-disable global-require */
 'use strict';
 
 const plugin = require('..');
