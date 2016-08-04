@@ -31,7 +31,7 @@
     "eslint-plugin-jsx-a11y": "^1.5.3",
     "eslint-plugin-react": "5.2.2",
     "istanbul": "0.4.4",
-    "mocha": "3.0.0"
+    "mocha": "3.0.1"
   },
   "keywords": [
     "eslint",
