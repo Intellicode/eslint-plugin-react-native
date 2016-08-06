@@ -24,7 +24,7 @@ describe('all rule files should be exported by the plugin', () => {
       );
     });
 
-    if (defaultSettings.hasOwnProperty(ruleName)) {
+    if ({}.hasOwnProperty.call(defaultSettings, ruleName)) {
       const val = defaultSettings[ruleName];
       it('should configure ' + ruleName + ' to ' + val + ' by default', () => {
         assert.equal(
