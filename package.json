@@ -27,7 +27,7 @@
     "babel-eslint": "6.1.2"
   },
   "devDependencies": {
-    "coveralls": "2.11.12",
+    "coveralls": "2.11.14",
     "eslint-config-airbnb": "10.0.1",
     "eslint-plugin-import": "^1.9.2",
     "eslint-plugin-jsx-a11y": "2.2.1",
