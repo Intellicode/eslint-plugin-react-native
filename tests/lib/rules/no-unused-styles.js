@@ -242,5 +242,5 @@ ruleTester.run('no-unused-styles', rule, {
     errors: [{
       message: 'Unused style detected: styles.text',
     }],
-  },
-] });
+  }],
+});

@@ -143,5 +143,5 @@ ruleTester.run('no-unused-styles', rule, {
     }, {
       message: 'IOS and Android components can\'t be mixed',
     }],
-  },
-] });
+  }],
+});
