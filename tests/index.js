@@ -42,3 +42,18 @@ describe('all rule files should be exported by the plugin', () => {
     }
   });
 });
+
+describe('configurations', () => {
+  it('should export a \'all\' configuration', () => {
+    assert(plugin.configs.all);
+    Object.keys(plugin.configs.all.rules).forEach((configName) => {
+      assert.equal(configName.indexOf('react-native/'), 0);
+      assert.equal(plugin.configs.all.rules[configName], 2);
+    });
+    rules.forEach((ruleName) => {
+      const inDeprecatedRules = Boolean(plugin.deprecatedRules[ruleName]);
+      const inAllConfig = Boolean(plugin.configs.all.rules['react-native/' + ruleName]);
+      assert(inDeprecatedRules ^ inAllConfig);
+    });
+  });
+});

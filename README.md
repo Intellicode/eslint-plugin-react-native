@@ -87,3 +87,21 @@ Finally, enable all of the rules that you would like to use.
 
 [status-url]: https://github.com/Intellicode/eslint-plugin-react-native/pulse
 [status-image]: http://img.shields.io/badge/status-maintained-brightgreen.svg?style=flat-square
+
+# Shareable configurations
+
+## All
+
+This plugin also exports an `all` configuration that includes every available rule.
+
+```js
+{
+  "plugins": [
+    /* ... */
+    "react-native"
+  ],
+  "extends": [/* ... */, "plugin:react-native/all"]
+}
+```
+
+**Note**: These configurations will import `eslint-plugin-react-native` and enable JSX in [parser options](http://eslint.org/docs/user-guide/configuring#specifying-parser-options).
