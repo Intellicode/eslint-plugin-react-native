@@ -24,7 +24,7 @@
   "bugs": "https://github.com/intellicode/eslint-plugin-react-native/issues",
   "dependencies": {
     "eslint": "3.10.2",
-    "babel-eslint": "7.1.0"
+    "babel-eslint": "7.1.1"
   },
   "devDependencies": {
     "coveralls": "2.11.15",
