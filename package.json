@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "coveralls": "2.11.15",
-    "eslint-config-airbnb": "10.0.1",
+    "eslint-config-airbnb": "11.1.0",
     "eslint-plugin-import": "^2.0.0",
     "eslint-plugin-jsx-a11y": "2.2.2",
     "eslint-plugin-react": "6.7.1",
