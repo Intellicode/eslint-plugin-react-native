@@ -221,6 +221,31 @@ ruleTester.run('no-unused-styles', rule, {
       classes: true,
       jsx: true,
     },
+  }, {
+    code: [
+      'const Hello = React.createClass({',
+      '  getInitialState: function() {',
+      '    return { condition: true }; ',
+      '  },',
+      '  render: function() {',
+      '    const myStyle = this.state.condition ? styles.text : styles.text2;',
+      '    return (',
+      '        <Text style={myStyle}>',
+      '            Hello {this.props.name}',
+      '        </Text>',
+      '    );',
+      '  }',
+      '});',
+      'const styles = StyleSheet.create({',
+      '  text: {},',
+      '  text2: {},',
+      '});',
+    ].join('\n'),
+    parser: 'babel-eslint',
+    ecmaFeatures: {
+      classes: true,
+      jsx: true,
+    },
   }],
 
   invalid: [{
