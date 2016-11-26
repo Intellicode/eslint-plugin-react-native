@@ -2,6 +2,7 @@
  * @fileoverview No unused styles defined in javascript files
  * @author Tom Hastjarjanto
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------

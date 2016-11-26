@@ -2,6 +2,7 @@
  * @fileoverview No inline styles defined in javascript files
  * @author Aaron Greenwald
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------

@@ -3,6 +3,7 @@
  * used in platform specific React Native components.
  * @author Tom Hastjarjanto
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------

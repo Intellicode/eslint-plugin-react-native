@@ -1,5 +1,6 @@
 /* eslint-env mocha */
 /* eslint-disable global-require */
+
 'use strict';
 
 const plugin = require('..');
@@ -9,7 +10,7 @@ const fs = require('fs');
 const path = require('path');
 
 const rules = fs.readdirSync(path.resolve(__dirname, '../lib/rules/'))
-  .map((f) => path.basename(f, '.js'));
+  .map(f => path.basename(f, '.js'));
 
 const defaultSettings = {
   'jsx-uses-vars': 1,
@@ -20,7 +21,7 @@ describe('all rule files should be exported by the plugin', () => {
     it('should export ' + ruleName, () => {
       assert.equal(
         plugin.rules[ruleName],
-        require(path.join('../lib/rules', ruleName))
+        require(path.join('../lib/rules', ruleName)) // eslint-disable-line import/no-dynamic-require
       );
     });
 
@@ -53,7 +54,7 @@ describe('configurations', () => {
     rules.forEach((ruleName) => {
       const inDeprecatedRules = Boolean(plugin.deprecatedRules[ruleName]);
       const inAllConfig = Boolean(plugin.configs.all.rules['react-native/' + ruleName]);
-      assert(inDeprecatedRules ^ inAllConfig);
+      assert(inDeprecatedRules ^ inAllConfig); // eslint-disable-line no-bitwise
     });
   });
 });
