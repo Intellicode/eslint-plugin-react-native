@@ -2,7 +2,7 @@
 ESLint plugin for React Native
 ==============================
 
-[![Maintenance Status][status-image]][status-url] [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][deps-image]][deps-url] [![Coverage Status][coverage-image]][coverage-url] [![Code Climate][climate-image]][climate-url]
+[![Maintenance Status][status-image]][status-url] [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][deps-image]][deps-url] [![Coverage Status][coverage-image]][coverage-url] [![Code Climate][climate-image]][climate-url] [![BCH compliance][bettercode-image][bettercode-url] 
 
 React Native specific linting rules for ESLint. This repository is structured like  (and contains code from) the excellent [eslint-plugin-react](http://github.com/yannickcr/eslint-plugin-react).
 
@@ -88,6 +88,8 @@ Finally, enable all of the rules that you would like to use.
 [status-url]: https://github.com/Intellicode/eslint-plugin-react-native/pulse
 [status-image]: http://img.shields.io/badge/status-maintained-brightgreen.svg?style=flat-square
 
+[bettercode-image]: https://bettercodehub.com/edge/badge/Intellicode/eslint-plugin-react-native
+[bettercode-url]: https://bettercodehub.com
 # Shareable configurations
 
 ## All
