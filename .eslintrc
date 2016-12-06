@@ -1,6 +1,6 @@
 {
   "extends": "airbnb",
-  rules: {
+  "rules": {
     "strict": [0, "global"],
     "func-names": 0,
     "object-shorthand": 0,
@@ -12,6 +12,42 @@
         "imports": "always-multiline",
         "exports": "always-multiline",
         "functions": "never",
-    }]
+    }],
+    "globals": {
+        "__DEV__": true,
+        "__dirname": false,
+        "__fbBatchedBridgeConfig": false,
+        "alert": false,
+        "cancelAnimationFrame": false,
+        "cancelIdleCallback": false,
+        "clearImmediate": true,
+        "clearInterval": false,
+        "clearTimeout": false,
+        "console": false,
+        "document": false,
+        "escape": false,
+        "Event": false,
+        "EventTarget": false,
+        "exports": false,
+        "fetch": false,
+        "FormData": false,
+        "global": false,
+        "jest": false,
+        "Map": true,
+        "module": false,
+        "navigator": false,
+        "process": false,
+        "Promise": true,
+        "requestAnimationFrame": true,
+        "requestIdleCallback": true,
+        "require": false,
+        "Set": true,
+        "setImmediate": true,
+        "setInterval": false,
+        "setTimeout": false,
+        "window": false,
+        "XMLHttpRequest": false,
+        "pit": false
+    }
   }
 }
