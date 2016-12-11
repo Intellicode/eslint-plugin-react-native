@@ -1,7 +1,8 @@
 /* eslint-disable global-require */
-'use strict'
 
-var allRules = {
+'use strict';
+
+const allRules = {
   'no-unused-styles': require('./lib/rules/no-unused-styles'),
   'no-inline-styles': require('./lib/rules/no-inline-styles'),
   'no-color-literals': require('./lib/rules/no-color-literals'),
@@ -9,8 +10,8 @@ var allRules = {
 };
 
 function configureAsError(rules) {
-  var result = {};
-  for (var key in rules) {
+  const result = {};
+  for (const key in rules) {
     if (!rules.hasOwnProperty(key)) {
       continue;
     }
@@ -19,7 +20,7 @@ function configureAsError(rules) {
   return result;
 }
 
-var allRulesConfig = configureAsError(allRules);
+const allRulesConfig = configureAsError(allRules);
 
 module.exports = {
   deprecatedRules: {},
@@ -28,7 +29,7 @@ module.exports = {
     'no-unused-styles': 0,
     'no-inline-styles': 0,
     'no-color-literals': 0,
-    'split-platform-components': 0
+    'split-platform-components': 0,
   },
   configs: {
     all: {
@@ -42,5 +43,5 @@ module.exports = {
       },
       rules: allRulesConfig,
     },
-  }
+  },
 };

@@ -1,6 +1,6 @@
 {
   "extends": "airbnb",
-  rules: {
+  "rules": {
     "strict": [0, "global"],
     "func-names": 0,
     "object-shorthand": 0,
@@ -11,7 +11,7 @@
         "objects": "always-multiline",
         "imports": "always-multiline",
         "exports": "always-multiline",
-        "functions": "never",
+        "functions": "never"
     }]
   }
 }
