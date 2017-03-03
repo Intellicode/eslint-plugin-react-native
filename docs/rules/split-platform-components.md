@@ -52,6 +52,16 @@ const Hello = React.createClass({
 });
 ```
 
+Using `import` declaration pattern: Hello.js
+```js
+import React from 'react'
+import { ActivityIndicatiorIOS } from 'react-native'
+
+export default function Hello() {
+  return <ActivityIndicatiorIOS/>
+}
+```
+
 The following patterns are not considered warnings:
 
 filename: Hello.ios.js
@@ -80,4 +90,14 @@ const Hello = React.createClass({
     return <ProgressBarAndroid />;
   }
 });
+```
+
+Using `import` declaration pattern: Hello.ios.js
+```js
+import React from 'react'
+import { ActivityIndicatiorIOS } from 'react-native'
+
+export default function Hello() {
+  return <ActivityIndicatiorIOS/>
+}
 ```
