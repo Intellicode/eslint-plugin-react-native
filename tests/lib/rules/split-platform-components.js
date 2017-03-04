@@ -20,7 +20,7 @@ require('babel-eslint');
 // ------------------------------------------------------------------------------
 
 const ruleTester = new RuleTester();
-ruleTester.run('no-unused-styles', rule, {
+ruleTester.run('split-platform-components', rule, {
 
   valid: [{
     code: [
@@ -69,6 +69,42 @@ ruleTester.run('no-unused-styles', rule, {
       '    return <View />;',
       '  }',
       '});',
+    ].join('\n'),
+    parser: 'babel-eslint',
+    filename: 'Hello.js',
+    ecmaFeatures: {
+      classes: true,
+      jsx: true,
+    },
+  }, {
+    code: [
+      'import {',
+      '  ActivityIndicatiorIOS,',
+      '} from \'react-native\'',
+    ].join('\n'),
+    filename: 'Hello.ios.js',
+    parser: 'babel-eslint',
+    ecmaFeatures: {
+      classes: true,
+      jsx: true,
+    },
+  }, {
+    code: [
+      'import {',
+      '  ProgressBarAndroid,',
+      '} from \'react-native\'',
+    ].join('\n'),
+    parser: 'babel-eslint',
+    filename: 'Hello.android.js',
+    ecmaFeatures: {
+      classes: true,
+      jsx: true,
+    },
+  }, {
+    code: [
+      'import {',
+      '  View,',
+      '} from \'react-native\'',
     ].join('\n'),
     parser: 'babel-eslint',
     filename: 'Hello.js',
@@ -132,6 +168,54 @@ ruleTester.run('no-unused-styles', rule, {
       '    return <ActivityIndicatiorIOS />;',
       '  }',
       '});',
+    ].join('\n'),
+    parser: 'babel-eslint',
+    filename: 'Hello.js',
+    ecmaFeatures: {
+      classes: true,
+      jsx: true,
+    },
+    errors: [{
+      message: 'IOS and Android components can\'t be mixed',
+    }, {
+      message: 'IOS and Android components can\'t be mixed',
+    }],
+  }, {
+    code: [
+      'import {',
+      '  ProgressBarAndroid,',
+      '} from \'react-native\'',
+    ].join('\n'),
+    parser: 'babel-eslint',
+    filename: 'Hello.js',
+    ecmaFeatures: {
+      classes: true,
+      jsx: true,
+    },
+    errors: [{
+      message: 'Android components should be placed in android files',
+    }],
+  }, {
+    code: [
+      'import {',
+      '  ActivityIndicatiorIOS,',
+      '} from \'react-native\'',
+    ].join('\n'),
+    parser: 'babel-eslint',
+    filename: 'Hello.js',
+    ecmaFeatures: {
+      classes: true,
+      jsx: true,
+    },
+    errors: [{
+      message: 'IOS components should be placed in ios files',
+    }],
+  }, {
+    code: [
+      'import {',
+      '  ActivityIndicatiorIOS,',
+      '  ProgressBarAndroid,',
+      '} from \'react-native\'',
     ].join('\n'),
     parser: 'babel-eslint',
     filename: 'Hello.js',
