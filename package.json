@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-react-native",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "author": "Tom Hastjarjanto <tom@intellicode.nl>",
   "description": "React Native specific linting rules for ESLint",
   "main": "index.js",
@@ -25,7 +25,7 @@
   "devDependencies": {
     "babel-eslint": "7.1.1",
     "coveralls": "2.11.16",
-    "eslint": "3.17.0",
+    "eslint": "^3.17.0",
     "eslint-config-airbnb": "14.1.0",
     "eslint-plugin-import": "^2.0.0",
     "eslint-plugin-jsx-a11y": "4.0.0",
@@ -34,7 +34,7 @@
     "mocha": "3.2.0"
   },
   "peerDependencies": {
-    "eslint": "3.12.1"
+    "eslint": "^3.17.0"
   },
   "keywords": [
     "eslint",
