@@ -247,6 +247,25 @@ ruleTester.run('no-unused-styles', rule, {
       classes: true,
       jsx: true,
     },
+  }, {
+    code: [
+      'const additionalStyles = {};',
+      'const styles = StyleSheet.create({',
+      '  name: {},',
+      '  ...additionalStyles',
+      '});',
+      'const Hello = React.createClass({',
+      '  render: function() {',
+      '    return <Text textStyle={styles.name}>Hello {this.props.name}</Text>;',
+      '  }',
+      '});',
+    ].join('\n'),
+    parser: 'babel-eslint',
+    ecmaFeatures: {
+      classes: true,
+      jsx: true,
+      spread: true,
+    },
   }],
 
   invalid: [{
