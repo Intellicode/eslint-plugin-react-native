@@ -23,7 +23,7 @@
   "homepage": "https://github.com/intellicode/eslint-plugin-react-native",
   "bugs": "https://github.com/intellicode/eslint-plugin-react-native/issues",
   "devDependencies": {
-    "babel-eslint": "7.2.2",
+    "babel-eslint": "7.2.3",
     "coveralls": "2.13.0",
     "eslint": "^3.17.0",
     "eslint-config-airbnb": "14.1.0",
