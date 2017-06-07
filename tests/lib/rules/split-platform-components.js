@@ -112,6 +112,42 @@ ruleTester.run('split-platform-components', rule, {
       classes: true,
       jsx: true,
     },
+  }, {
+    code: [
+      'const React = require(\'react-native\');',
+      'const {',
+      '  ActivityIndicatiorIOS,',
+      '} = React',
+      'const Hello = React.createClass({',
+      '  render: function() {',
+      '    return <ActivityIndicatiorIOS />;',
+      '  }',
+      '});',
+    ].join('\n'),
+    filename: 'Hello.ios.test.js',
+    parser: 'babel-eslint',
+    ecmaFeatures: {
+      classes: true,
+      jsx: true,
+    },
+  }, {
+    code: [
+      'const React = require(\'react-native\');',
+      'const {',
+      '  ProgressBarAndroid,',
+      '} = React',
+      'const Hello = React.createClass({',
+      '  render: function() {',
+      '    return <ProgressBarAndroid />;',
+      '  }',
+      '});',
+    ].join('\n'),
+    parser: 'babel-eslint',
+    filename: 'Hello.android.test.js',
+    ecmaFeatures: {
+      classes: true,
+      jsx: true,
+    },
   }],
 
   invalid: [{
