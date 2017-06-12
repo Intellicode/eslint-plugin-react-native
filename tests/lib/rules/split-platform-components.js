@@ -124,6 +124,9 @@ ruleTester.run('split-platform-components', rule, {
       '  }',
       '});',
     ].join('\n'),
+    options: [{
+      iosPathRegex: '\\.ios(\\.test)?\\.js$',
+    }],
     filename: 'Hello.ios.test.js',
     parser: 'babel-eslint',
     ecmaFeatures: {
@@ -143,6 +146,9 @@ ruleTester.run('split-platform-components', rule, {
       '});',
     ].join('\n'),
     parser: 'babel-eslint',
+    options: [{
+      androidPathRegex: '\\.android(\\.test)?\\.js$',
+    }],
     filename: 'Hello.android.test.js',
     ecmaFeatures: {
       classes: true,
