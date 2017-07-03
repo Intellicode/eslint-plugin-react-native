@@ -33,7 +33,7 @@ module.exports = {
   },
   configs: {
     all: {
-      plugin: [
+      plugins: [
         'react-native',
       ],
       parserOptions: {
