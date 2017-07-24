@@ -34,7 +34,7 @@
     "mocha": "3.4.1"
   },
   "peerDependencies": {
-    "eslint": "^3.17.0 || ^4.0.0"
+    "eslint": "^3.17.0 || ^4.1.0"
   },
   "keywords": [
     "eslint",
