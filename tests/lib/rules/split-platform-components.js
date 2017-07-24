@@ -20,8 +20,7 @@ require('babel-eslint');
 // ------------------------------------------------------------------------------
 
 const ruleTester = new RuleTester();
-ruleTester.run('split-platform-components', rule, {
-
+const tests = {
   valid: [{
     code: [
       'const React = require(\'react-native\');',
@@ -35,11 +34,6 @@ ruleTester.run('split-platform-components', rule, {
       '});',
     ].join('\n'),
     filename: 'Hello.ios.js',
-    parser: 'babel-eslint',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true,
-    },
   }, {
     code: [
       'const React = require(\'react-native\');',
@@ -52,12 +46,7 @@ ruleTester.run('split-platform-components', rule, {
       '  }',
       '});',
     ].join('\n'),
-    parser: 'babel-eslint',
     filename: 'Hello.android.js',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true,
-    },
   }, {
     code: [
       'const React = require(\'react-native\');',
@@ -70,12 +59,7 @@ ruleTester.run('split-platform-components', rule, {
       '  }',
       '});',
     ].join('\n'),
-    parser: 'babel-eslint',
     filename: 'Hello.js',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true,
-    },
   }, {
     code: [
       'import {',
@@ -83,35 +67,20 @@ ruleTester.run('split-platform-components', rule, {
       '} from \'react-native\'',
     ].join('\n'),
     filename: 'Hello.ios.js',
-    parser: 'babel-eslint',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true,
-    },
   }, {
     code: [
       'import {',
       '  ProgressBarAndroid,',
       '} from \'react-native\'',
     ].join('\n'),
-    parser: 'babel-eslint',
     filename: 'Hello.android.js',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true,
-    },
   }, {
     code: [
       'import {',
       '  View,',
       '} from \'react-native\'',
     ].join('\n'),
-    parser: 'babel-eslint',
     filename: 'Hello.js',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true,
-    },
   }, {
     code: [
       'const React = require(\'react-native\');',
@@ -128,11 +97,6 @@ ruleTester.run('split-platform-components', rule, {
       iosPathRegex: '\\.ios(\\.test)?\\.js$',
     }],
     filename: 'Hello.ios.test.js',
-    parser: 'babel-eslint',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true,
-    },
   }, {
     code: [
       'const React = require(\'react-native\');',
@@ -145,15 +109,10 @@ ruleTester.run('split-platform-components', rule, {
       '  }',
       '});',
     ].join('\n'),
-    parser: 'babel-eslint',
     options: [{
       androidPathRegex: '\\.android(\\.test)?\\.js$',
     }],
     filename: 'Hello.android.test.js',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true,
-    },
   }],
 
   invalid: [{
@@ -168,12 +127,7 @@ ruleTester.run('split-platform-components', rule, {
       '  }',
       '});',
     ].join('\n'),
-    parser: 'babel-eslint',
     filename: 'Hello.js',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true,
-    },
     errors: [{
       message: 'Android components should be placed in android files',
     }],
@@ -189,12 +143,7 @@ ruleTester.run('split-platform-components', rule, {
       '  }',
       '});',
     ].join('\n'),
-    parser: 'babel-eslint',
     filename: 'Hello.js',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true,
-    },
     errors: [{
       message: 'IOS components should be placed in ios files',
     }],
@@ -211,12 +160,7 @@ ruleTester.run('split-platform-components', rule, {
       '  }',
       '});',
     ].join('\n'),
-    parser: 'babel-eslint',
     filename: 'Hello.js',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true,
-    },
     errors: [{
       message: 'IOS and Android components can\'t be mixed',
     }, {
@@ -228,12 +172,7 @@ ruleTester.run('split-platform-components', rule, {
       '  ProgressBarAndroid,',
       '} from \'react-native\'',
     ].join('\n'),
-    parser: 'babel-eslint',
     filename: 'Hello.js',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true,
-    },
     errors: [{
       message: 'Android components should be placed in android files',
     }],
@@ -243,12 +182,7 @@ ruleTester.run('split-platform-components', rule, {
       '  ActivityIndicatiorIOS,',
       '} from \'react-native\'',
     ].join('\n'),
-    parser: 'babel-eslint',
     filename: 'Hello.js',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true,
-    },
     errors: [{
       message: 'IOS components should be placed in ios files',
     }],
@@ -259,16 +193,26 @@ ruleTester.run('split-platform-components', rule, {
       '  ProgressBarAndroid,',
       '} from \'react-native\'',
     ].join('\n'),
-    parser: 'babel-eslint',
     filename: 'Hello.js',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true,
-    },
     errors: [{
       message: 'IOS and Android components can\'t be mixed',
     }, {
       message: 'IOS and Android components can\'t be mixed',
     }],
   }],
-});
+};
+
+const config = {
+  parser: 'babel-eslint',
+  parserOptions: {
+    ecmaFeatures: {
+      classes: true,
+      jsx: true,
+    },
+  },
+};
+
+tests.valid.forEach(t => Object.assign(t, config));
+tests.invalid.forEach(t => Object.assign(t, config));
+
+ruleTester.run('split-platform-components', rule, tests);

@@ -182,9 +182,11 @@ const tests = {
 
 const config = {
   parser: 'babel-eslint',
-  ecmaFeatures: {
-    classes: true,
-    jsx: true,
+  parserOptions: {
+    ecmaFeatures: {
+      classes: true,
+      jsx: true,
+    },
   },
 };
 

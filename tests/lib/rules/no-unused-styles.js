@@ -19,8 +19,7 @@ require('babel-eslint');
 // ------------------------------------------------------------------------------
 
 const ruleTester = new RuleTester();
-ruleTester.run('no-unused-styles', rule, {
-
+const tests = {
   valid: [{
     code: [
       'const styles = StyleSheet.create({',
@@ -32,11 +31,6 @@ ruleTester.run('no-unused-styles', rule, {
       '  }',
       '});',
     ].join('\n'),
-    parser: 'babel-eslint',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true,
-    },
   }, {
     code: [
       'const Hello = React.createClass({',
@@ -48,11 +42,6 @@ ruleTester.run('no-unused-styles', rule, {
       '  name: {}',
       '});',
     ].join('\n'),
-    parser: 'babel-eslint',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true,
-    },
   }, {
     code: [
       'const styles = StyleSheet.create({',
@@ -64,11 +53,6 @@ ruleTester.run('no-unused-styles', rule, {
       '  }',
       '});',
     ].join('\n'),
-    parser: 'babel-eslint',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true,
-    },
   }, {
     code: [
       'const styles = StyleSheet.create({',
@@ -86,11 +70,6 @@ ruleTester.run('no-unused-styles', rule, {
       '  }',
       '});',
     ].join('\n'),
-    parser: 'babel-eslint',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true,
-    },
   }, {
     code: [
       'const styles = StyleSheet.create({',
@@ -105,11 +84,6 @@ ruleTester.run('no-unused-styles', rule, {
       '  }',
       '});',
     ].join('\n'),
-    parser: 'babel-eslint',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true,
-    },
   }, {
     code: [
       'const styles = StyleSheet.create({',
@@ -131,11 +105,6 @@ ruleTester.run('no-unused-styles', rule, {
       '  }',
       '});',
     ].join('\n'),
-    parser: 'babel-eslint',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true,
-    },
   }, {
     code: [
       'const styles = StyleSheet.create({',
@@ -158,11 +127,6 @@ ruleTester.run('no-unused-styles', rule, {
       '  }',
       '});',
     ].join('\n'),
-    parser: 'babel-eslint',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true,
-    },
   }, {
     code: [
       'const styles = StyleSheet.create({',
@@ -182,11 +146,6 @@ ruleTester.run('no-unused-styles', rule, {
       '  }',
       '});',
     ].join('\n'),
-    parser: 'babel-eslint',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true,
-    },
   }, {
     code: [
       'const styles = StyleSheet.create({',
@@ -206,22 +165,12 @@ ruleTester.run('no-unused-styles', rule, {
       '    }',
       '}',
     ].join('\n'),
-    parser: 'babel-eslint',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true,
-    },
   }, {
     code: [
       'const styles = StyleSheet.create({',
       '  text: {}',
       '})',
     ].join('\n'),
-    parser: 'babel-eslint',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true,
-    },
   }, {
     code: [
       'const Hello = React.createClass({',
@@ -242,11 +191,6 @@ ruleTester.run('no-unused-styles', rule, {
       '  text2: {},',
       '});',
     ].join('\n'),
-    parser: 'babel-eslint',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true,
-    },
   }, {
     code: [
       'const additionalStyles = {};',
@@ -260,12 +204,6 @@ ruleTester.run('no-unused-styles', rule, {
       '  }',
       '});',
     ].join('\n'),
-    parser: 'babel-eslint',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true,
-      spread: true,
-    },
   }],
 
   invalid: [{
@@ -279,13 +217,23 @@ ruleTester.run('no-unused-styles', rule, {
       '  }',
       '});',
     ].join('\n'),
-    parser: 'babel-eslint',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true,
-    },
     errors: [{
       message: 'Unused style detected: styles.text',
     }],
   }],
-});
+};
+
+const config = {
+  parser: 'babel-eslint',
+  parserOptions: {
+    ecmaFeatures: {
+      classes: true,
+      jsx: true,
+    },
+  },
+};
+
+tests.valid.forEach(t => Object.assign(t, config));
+tests.invalid.forEach(t => Object.assign(t, config));
+
+ruleTester.run('split-platform-components', rule, tests);
