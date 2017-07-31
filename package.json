@@ -31,7 +31,7 @@
     "eslint-plugin-jsx-a11y": "5.1.0",
     "eslint-plugin-react": "7.0.1",
     "istanbul": "0.4.5",
-    "mocha": "3.4.1"
+    "mocha": "3.5.0"
   },
   "peerDependencies": {
     "eslint": "^3.17.0 || ^4.0.0"
