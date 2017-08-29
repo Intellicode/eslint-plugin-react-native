@@ -236,4 +236,4 @@ const config = {
 tests.valid.forEach(t => Object.assign(t, config));
 tests.invalid.forEach(t => Object.assign(t, config));
 
-ruleTester.run('split-platform-components', rule, tests);
+ruleTester.run('no-unused-styles', rule, tests);
