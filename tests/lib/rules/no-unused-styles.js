@@ -220,6 +220,36 @@ const tests = {
     errors: [{
       message: 'Unused style detected: styles.text',
     }],
+  }, {
+    code: [
+      'const styles = StyleSheet.create({',
+      '  foo: {},',
+      '  bar: {},',
+      '})',
+      'class Foo extends React.Component {',
+      '  render() {',
+      '    return <View style={styles.foo}/>;',
+      '  }',
+      '}',
+    ].join('\n'),
+    errors: [{
+      message: 'Unused style detected: styles.bar',
+    }],
+  }, {
+    code: [
+      'const styles = StyleSheet.create({',
+      '  foo: {},',
+      '  bar: {},',
+      '})',
+      'class Foo extends React.PureComponent {',
+      '  render() {',
+      '    return <View style={styles.foo}/>;',
+      '  }',
+      '}',
+    ].join('\n'),
+    errors: [{
+      message: 'Unused style detected: styles.bar',
+    }],
   }],
 };
 
