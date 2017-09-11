@@ -22,93 +22,93 @@ require('babel-eslint');
 const ruleTester = new RuleTester();
 const tests = {
   valid: [{
-    code: [
-      'const React = require(\'react-native\');',
-      'const {',
-      '  ActivityIndicatiorIOS,',
-      '} = React',
-      'const Hello = React.createClass({',
-      '  render: function() {',
-      '    return <ActivityIndicatiorIOS />;',
-      '  }',
-      '});',
-    ].join('\n'),
+    code: `
+      const React = require('react-native');
+      const {
+        ActivityIndicatiorIOS,
+      } = React
+      const Hello = React.createClass({
+        render: function() {
+          return <ActivityIndicatiorIOS />;
+        }
+      });
+    `,
     filename: 'Hello.ios.js',
   }, {
-    code: [
-      'const React = require(\'react-native\');',
-      'const {',
-      '  ProgressBarAndroid,',
-      '} = React',
-      'const Hello = React.createClass({',
-      '  render: function() {',
-      '    return <ProgressBarAndroid />;',
-      '  }',
-      '});',
-    ].join('\n'),
+    code: `
+      const React = require('react-native');
+      const {
+        ProgressBarAndroid,
+      } = React
+      const Hello = React.createClass({
+        render: function() {
+          return <ProgressBarAndroid />;
+        }
+      });
+    `,
     filename: 'Hello.android.js',
   }, {
-    code: [
-      'const React = require(\'react-native\');',
-      'const {',
-      '  View,',
-      '} = React',
-      'const Hello = React.createClass({',
-      '  render: function() {',
-      '    return <View />;',
-      '  }',
-      '});',
-    ].join('\n'),
+    code: `
+      const React = require('react-native');
+      const {
+        View,
+      } = React
+      const Hello = React.createClass({
+        render: function() {
+          return <View />;
+        }
+      });
+    `,
     filename: 'Hello.js',
   }, {
-    code: [
-      'import {',
-      '  ActivityIndicatiorIOS,',
-      '} from \'react-native\'',
-    ].join('\n'),
+    code: `
+      import {
+        ActivityIndicatiorIOS,
+      } from 'react-native'
+    `,
     filename: 'Hello.ios.js',
   }, {
-    code: [
-      'import {',
-      '  ProgressBarAndroid,',
-      '} from \'react-native\'',
-    ].join('\n'),
+    code: `
+      import {
+        ProgressBarAndroid,
+      } from 'react-native'
+    `,
     filename: 'Hello.android.js',
   }, {
-    code: [
-      'import {',
-      '  View,',
-      '} from \'react-native\'',
-    ].join('\n'),
+    code: `
+      import {
+        View,
+      } from 'react-native'
+    `,
     filename: 'Hello.js',
   }, {
-    code: [
-      'const React = require(\'react-native\');',
-      'const {',
-      '  ActivityIndicatiorIOS,',
-      '} = React',
-      'const Hello = React.createClass({',
-      '  render: function() {',
-      '    return <ActivityIndicatiorIOS />;',
-      '  }',
-      '});',
-    ].join('\n'),
+    code: `
+      const React = require('react-native');
+      const {
+        ActivityIndicatiorIOS,
+      } = React
+      const Hello = React.createClass({
+        render: function() {
+          return <ActivityIndicatiorIOS />;
+        }
+      });
+    `,
     options: [{
       iosPathRegex: '\\.ios(\\.test)?\\.js$',
     }],
     filename: 'Hello.ios.test.js',
   }, {
-    code: [
-      'const React = require(\'react-native\');',
-      'const {',
-      '  ProgressBarAndroid,',
-      '} = React',
-      'const Hello = React.createClass({',
-      '  render: function() {',
-      '    return <ProgressBarAndroid />;',
-      '  }',
-      '});',
-    ].join('\n'),
+    code: `
+      const React = require('react-native');
+      const {
+        ProgressBarAndroid,
+      } = React
+      const Hello = React.createClass({
+        render: function() {
+          return <ProgressBarAndroid />;
+        }
+      });
+    `,
     options: [{
       androidPathRegex: '\\.android(\\.test)?\\.js$',
     }],
@@ -116,50 +116,50 @@ const tests = {
   }],
 
   invalid: [{
-    code: [
-      'const React = require(\'react-native\');',
-      'const {',
-      '  ProgressBarAndroid,',
-      '} = React',
-      'const Hello = React.createClass({',
-      '  render: function() {',
-      '    return <ProgressBarAndroid />;',
-      '  }',
-      '});',
-    ].join('\n'),
+    code: `
+      const React = require('react-native');
+      const {
+        ProgressBarAndroid,
+      } = React
+      const Hello = React.createClass({
+        render: function() {
+          return <ProgressBarAndroid />;
+        }
+      });
+    `,
     filename: 'Hello.js',
     errors: [{
       message: 'Android components should be placed in android files',
     }],
   }, {
-    code: [
-      'const React = require(\'react-native\');',
-      'const {',
-      '  ActivityIndicatiorIOS,',
-      '} = React',
-      'const Hello = React.createClass({',
-      '  render: function() {',
-      '    return <ActivityIndicatiorIOS />;',
-      '  }',
-      '});',
-    ].join('\n'),
+    code: `
+      const React = require('react-native');
+      const {
+        ActivityIndicatiorIOS,
+      } = React
+      const Hello = React.createClass({
+        render: function() {
+          return <ActivityIndicatiorIOS />;
+        }
+      });
+    `,
     filename: 'Hello.js',
     errors: [{
       message: 'IOS components should be placed in ios files',
     }],
   }, {
-    code: [
-      'const React = require(\'react-native\');',
-      'const {',
-      '  ActivityIndicatiorIOS,',
-      '  ProgressBarAndroid,',
-      '} = React',
-      'const Hello = React.createClass({',
-      '  render: function() {',
-      '    return <ActivityIndicatiorIOS />;',
-      '  }',
-      '});',
-    ].join('\n'),
+    code: `
+      const React = require('react-native');
+      const {
+        ActivityIndicatiorIOS,
+        ProgressBarAndroid,
+      } = React
+      const Hello = React.createClass({
+        render: function() {
+          return <ActivityIndicatiorIOS />;
+        }
+      });
+    `,
     filename: 'Hello.js',
     errors: [{
       message: 'IOS and Android components can\'t be mixed',
@@ -167,32 +167,32 @@ const tests = {
       message: 'IOS and Android components can\'t be mixed',
     }],
   }, {
-    code: [
-      'import {',
-      '  ProgressBarAndroid,',
-      '} from \'react-native\'',
-    ].join('\n'),
+    code: `
+      import {
+        ProgressBarAndroid,
+      } from 'react-native'
+    `,
     filename: 'Hello.js',
     errors: [{
       message: 'Android components should be placed in android files',
     }],
   }, {
-    code: [
-      'import {',
-      '  ActivityIndicatiorIOS,',
-      '} from \'react-native\'',
-    ].join('\n'),
+    code: `
+      import {
+        ActivityIndicatiorIOS,
+      } from 'react-native'
+    `,
     filename: 'Hello.js',
     errors: [{
       message: 'IOS components should be placed in ios files',
     }],
   }, {
-    code: [
-      'import {',
-      '  ActivityIndicatiorIOS,',
-      '  ProgressBarAndroid,',
-      '} from \'react-native\'',
-    ].join('\n'),
+    code: `
+      import {
+        ActivityIndicatiorIOS,
+        ProgressBarAndroid,
+      } from 'react-native'
+    `,
     filename: 'Hello.js',
     errors: [{
       message: 'IOS and Android components can\'t be mixed',
