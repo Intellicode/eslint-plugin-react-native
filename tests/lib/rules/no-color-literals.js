@@ -150,6 +150,7 @@ const tests = {
                 color: 'red',
             },
             style2: {
+                // this is illegal even though it's not used anywhere
                 borderBottomColor: 'blue',
             }
         });
