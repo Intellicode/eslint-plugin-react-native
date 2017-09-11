@@ -149,8 +149,8 @@ const tests = {
             style1: {
                 color: 'red',
             },
+            // this is illegal even though it's not used anywhere
             style2: {
-                // this is illegal even though it's not used anywhere
                 borderBottomColor: 'blue',
             }
         });
