@@ -52,6 +52,16 @@ If it is not already the case you must also configure `ESLint` to support JSX.
 }
 ```
 
+In order to whitelist all *browser-like* globals, add `react-native/react-native` to your config.
+
+```json
+{
+  "env": {
+    "react-native/react-native": true
+  }
+}
+```
+
 Finally, enable all of the rules that you would like to use.
 
 ```json
