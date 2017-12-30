@@ -44,5 +44,8 @@
     "react-native",
     "react native"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "eslint-plugin-react-native-globals": "^0.1.1"
+  }
 }
