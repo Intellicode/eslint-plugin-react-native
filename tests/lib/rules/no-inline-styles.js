@@ -66,6 +66,18 @@ const tests = {
         }
       `,
     },
+    {
+      code: `
+        const Hello = React.createClass({
+          render: function() {
+            const exampleVar = 10;
+            return <Text style={{marginLeft: -exampleVar, height: +examplevar}}>
+              Hello {this.props.name}
+             </Text>;
+          }
+        });
+      `,
+    },
   ],
   invalid: [
     {
