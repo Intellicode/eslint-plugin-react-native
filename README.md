@@ -13,20 +13,20 @@ React Native specific linting rules for ESLint. This repository is structured li
 Install [ESLint](https://www.github.com/eslint/eslint) either locally or globally.
 
 ```sh
-$ npm install eslint
+$ npm install --save-dev eslint
 ```
 
 To make most use of this plugin, its recommended to install [eslint-plugin-react](http://github.com/yannickcr/eslint-plugin-react) in addition to [ESLint](https://www.github.com/eslint/eslint). If you installed `ESLint` globally, you have to install eslint-plugin-react globally too. Otherwise, install it locally.
 
 ```sh
-$ npm install eslint-plugin-react
+$ npm install --save-dev eslint-plugin-react
 ```
 
 Similarly, install eslint-plugin-react-native
 
 
 ```sh
-$ npm install eslint-plugin-react-native
+$ npm install --save-dev eslint-plugin-react-native
 ```
 
 # Configuration
