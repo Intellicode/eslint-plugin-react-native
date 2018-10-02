@@ -7,6 +7,7 @@ const allRules = {
   'no-inline-styles': require('./lib/rules/no-inline-styles'),
   'no-color-literals': require('./lib/rules/no-color-literals'),
   'split-platform-components': require('./lib/rules/split-platform-components'),
+  'no-raw-text': require('./lib/rules/no-raw-text'),
 };
 
 function configureAsError(rules) {
@@ -30,6 +31,7 @@ module.exports = {
     'no-inline-styles': 0,
     'no-color-literals': 0,
     'split-platform-components': 0,
+    'no-raw-text': 0,
   },
   environments: {
     'react-native': {

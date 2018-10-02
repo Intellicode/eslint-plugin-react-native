@@ -71,6 +71,7 @@ Finally, enable all of the rules that you would like to use.
     "react-native/split-platform-components": 2,
     "react-native/no-inline-styles": 2,
     "react-native/no-color-literals": 2,
+    "react-native/no-raw-text": 2,
   }
 }
 ```
@@ -81,6 +82,7 @@ Finally, enable all of the rules that you would like to use.
 * [split-platform-components](docs/rules/split-platform-components.md): Enforce using platform specific filenames when necessary
 * [no-inline-styles](docs/rules/no-inline-styles.md): Detect JSX components with inline styles that contain literal values
 * [no-color-literals](docs/rules/no-color-literals.md): Detect `StyleSheet` rules and inline styles containing color literals instead of variables
+* [no-raw-text](docs/rules/no-raw-text.md): Detect raw text outside of `Text`  component
 
 [npm-url]: https://npmjs.org/package/eslint-plugin-react-native
 [npm-image]: http://img.shields.io/npm/v/eslint-plugin-react-native.svg?style=flat-square
