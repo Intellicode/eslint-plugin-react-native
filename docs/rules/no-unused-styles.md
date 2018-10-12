@@ -120,4 +120,4 @@ const styles = StyleSheet.create({
   text: {}
 });
 ```
-There should be atleast one component, so centralized `StyleSheets` are not checked for unused rules.
+There should be at least one component, so centralized `StyleSheets` are not checked for unused rules.
