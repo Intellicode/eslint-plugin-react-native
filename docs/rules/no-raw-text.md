@@ -24,3 +24,7 @@ The following patterns are not considered warnings:
 const text = 'some text';
 <View><Text>{`${text}`}</Text></View>
 ```
+
+####This rule has an object option:
+
+- "skip" – allow to skip checking for the array of custom components
