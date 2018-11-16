@@ -204,6 +204,17 @@ const tests = {
         }
       });
     `,
+  }, {
+    code: `
+      const styles = OtherStyleSheet.create({
+        name: {},
+      });
+      const Hello = React.createClass({
+        render: function() {
+          return <Text textStyle={styles.name}>Hello {this.props.name}</Text>;
+        }
+      });
+    `,
   }],
 
   invalid: [{
@@ -250,6 +261,21 @@ const tests = {
     errors: [{
       message: 'Unused style detected: styles.bar',
     }],
+  }, {
+    code: `
+      const styles = OtherStyleSheet.create({
+        foo: {},
+        bar: {},
+      })
+      class Foo extends React.PureComponent {
+        render() {
+          return <View style={styles.foo}/>;
+        }
+      }
+    `,
+    errors: [{
+      message: 'Unused style detected: styles.bar',
+    }],
   }],
 };
 
@@ -260,6 +286,9 @@ const config = {
       classes: true,
       jsx: true,
     },
+  },
+  settings: {
+    'react-native/style-sheet-object-names': ['StyleSheet', 'OtherStyleSheet'],
   },
 };
 
