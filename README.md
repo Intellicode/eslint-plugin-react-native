@@ -4,7 +4,7 @@ ESLint plugin for React Native
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/Intellicode/eslint-plugin-react-native.svg)](https://greenkeeper.io/)
 
-[![Maintenance Status][status-image]][status-url] [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][deps-image]][deps-url] [![Coverage Status][coverage-image]][coverage-url] [![Code Climate][climate-image]][climate-url] [![BCH compliance][bettercode-image]][bettercode-url] 
+[![Maintenance Status][status-image]][status-url] [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][deps-image]][deps-url] [![Coverage Status][coverage-image]][coverage-url] [![Code Climate][climate-image]][climate-url] [![BCH compliance][bettercode-image]][bettercode-url]
 
 React Native specific linting rules for ESLint. This repository is structured like  (and contains code from) the excellent [eslint-plugin-react](http://github.com/yannickcr/eslint-plugin-react).
 
@@ -79,6 +79,7 @@ Finally, enable all of the rules that you would like to use.
 # List of supported rules
 
 * [no-unused-styles](docs/rules/no-unused-styles.md): Detect `StyleSheet` rules which are not used in your React components
+* [sort-styles](docs/rules/sort-styles.md): Require style definitions to be sorted alphabetically
 * [split-platform-components](docs/rules/split-platform-components.md): Enforce using platform specific filenames when necessary
 * [no-inline-styles](docs/rules/no-inline-styles.md): Detect JSX components with inline styles that contain literal values
 * [no-color-literals](docs/rules/no-color-literals.md): Detect `StyleSheet` rules and inline styles containing color literals instead of variables
