@@ -46,8 +46,10 @@ If it is not already the case you must also configure `ESLint` to support JSX.
 
 ```json
 {
-  "ecmaFeatures": {
-    "jsx": true
+  "parserOptions": {
+      "ecmaFeatures": {
+          "jsx": true
+      }
   }
 }
 ```
