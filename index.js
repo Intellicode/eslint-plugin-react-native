@@ -6,7 +6,9 @@ const allRules = {
   'no-unused-styles': require('./lib/rules/no-unused-styles'),
   'no-inline-styles': require('./lib/rules/no-inline-styles'),
   'no-color-literals': require('./lib/rules/no-color-literals'),
+  'sort-styles': require('./lib/rules/sort-styles'),
   'split-platform-components': require('./lib/rules/split-platform-components'),
+  'no-raw-text': require('./lib/rules/no-raw-text'),
 };
 
 function configureAsError(rules) {
@@ -29,7 +31,14 @@ module.exports = {
     'no-unused-styles': 0,
     'no-inline-styles': 0,
     'no-color-literals': 0,
+    'sort-styles': 0,
     'split-platform-components': 0,
+    'no-raw-text': 0,
+  },
+  environments: {
+    'react-native': {
+      globals: require('eslint-plugin-react-native-globals').environments.all.globals,
+    },
   },
   configs: {
     all: {
