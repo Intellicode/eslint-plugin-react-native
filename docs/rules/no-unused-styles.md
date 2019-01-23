@@ -1,5 +1,5 @@
 # Detect unused StyleSheet rules in React components
-When working on a component over a longer period of time, you could end up with unused StyleSheet rules that slipt in over time but are forgotten as you continue to improve your UX/UI design.
+When working on a component over a longer period of time, you could end up with unused StyleSheet rules that slipped in over time but are forgotten as you continue to improve your UX/UI design.
 
 ## Rule Details
 
