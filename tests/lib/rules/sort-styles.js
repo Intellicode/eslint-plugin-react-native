@@ -154,6 +154,41 @@ const tests = {
         message: 'Expected class names to be in ascending order. \'a\' should be before \'b\'.',
       }],
     },
+    {
+      code: `
+        const styles = StyleSheet.create({
+          'b': {},
+          'a': {},
+        })
+      `,
+      errors: [{
+        message: 'Expected class names to be in ascending order. \'a\' should be before \'b\'.',
+      }],
+    },
+    {
+      code: `
+        const styles = StyleSheet.create({
+          ['b']: {},
+          [\`a\`]: {},
+        })
+      `,
+      errors: [{
+        message: 'Expected class names to be in ascending order. \'a\' should be before \'b\'.',
+      }],
+    },
+    {
+      code: `
+        const a = 'a';
+        const b = 'b';
+        const styles = StyleSheet.create({
+          [\`\${a}-\${b}-b\`]: {},
+          [\`a-\${b}-a\`]: {},
+        })
+      `,
+      errors: [{
+        message: 'Expected class names to be in ascending order. \'a-b-a\' should be before \'a-b-b\'.',
+      }],
+    },
   ],
 };
 
