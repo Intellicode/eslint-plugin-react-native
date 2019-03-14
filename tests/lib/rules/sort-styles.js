@@ -121,73 +121,208 @@ const tests = {
       `,
       options: ['asc', { ignoreClassNames: true }],
     },
-  ],
-  invalid: [
     {
       code: `
         const styles = StyleSheet.create({
-          myClass: {
-            y: 2,
-            x: 1,
-            z: 3,
-          },
-        })
-        `,
-      errors: [{
-        message: 'Expected style properties to be in ascending order. \'x\' should be before \'y\'.',
-      }],
-    },
-    {
-      code: `
-        const styles = StyleSheet.create({
-          b: {
-            x: 1,
-            y: 2,
-          },
           a: {
+            x: 1,
+            y: 2,
+            ...c,
+            a: 1,
+            c: 2,
+            ...g,
+            b: 5,
+          },
+          c: {},
+          ...g,
+          b: {
             a: 1,
             b: 2,
           },
         })
       `,
-      errors: [{
-        message: 'Expected class names to be in ascending order. \'a\' should be before \'b\'.',
-      }],
+    },
+  ],
+  invalid: [
+    {
+      code: `
+          const styles = StyleSheet.create({
+            myClass: {
+              y: 2,
+              x: 1,
+              z: 3,
+            },
+          })
+          `,
+      output: `
+          const styles = StyleSheet.create({
+            myClass: {
+              x: 1,
+              y: 2,
+              z: 3,
+            },
+          })
+          `,
+      errors: [
+        {
+          message: "Expected style properties to be in ascending order. 'x' should be before 'y'.",
+        },
+      ],
+    },
+    {
+      code: `
+          const styles = StyleSheet.create({
+            b: {
+              x: 1,
+              y: 2,
+            },
+            a: {
+              a: 1,
+              b: 2,
+            },
+          })
+        `,
+      output: `
+          const styles = StyleSheet.create({
+            a: {
+              a: 1,
+              b: 2,
+            },
+            b: {
+              x: 1,
+              y: 2,
+            },
+          })
+        `,
+      errors: [
+        {
+          message: "Expected class names to be in ascending order. 'a' should be before 'b'.",
+        },
+      ],
+    },
+    {
+      code: `
+          const styles = StyleSheet.create({
+            'd': {},
+            'c': {},
+            'a': {},
+            'e': {},
+            'b': {},
+          })
+        `,
+
+      output: `
+          const styles = StyleSheet.create({
+            'a': {},
+            'b': {},
+            'c': {},
+            'd': {},
+            'e': {},
+          })
+        `,
+      errors: [
+        {
+          message: "Expected class names to be in ascending order. 'c' should be before 'd'.",
+        },
+      ],
+    },
+    {
+      code: `
+          const styles = StyleSheet.create({
+            ['b']: {},
+            [\`a\`]: {},
+          })
+        `,
+      output: `
+          const styles = StyleSheet.create({
+            [\`a\`]: {},
+            ['b']: {},
+          })
+        `,
+      errors: [
+        {
+          message: "Expected class names to be in ascending order. 'a' should be before 'b'.",
+        },
+      ],
+    },
+    {
+      code: `
+          const a = 'a';
+          const b = 'b';
+          const styles = StyleSheet.create({
+            [\`\${a}-\${b}-b\`]: {},
+            [\`a-\${b}-a\`]: {},
+          })
+        `,
+      output: `
+          const a = 'a';
+          const b = 'b';
+          const styles = StyleSheet.create({
+            [\`a-\${b}-a\`]: {},
+            [\`\${a}-\${b}-b\`]: {},
+          })
+        `,
+      errors: [
+        {
+          message:
+            "Expected class names to be in ascending order. 'a-b-a' should be before 'a-b-b'.",
+        },
+      ],
     },
     {
       code: `
         const styles = StyleSheet.create({
-          'b': {},
-          'a': {},
+          a: {
+            y: 2,
+            x: 1,
+            ...c,
+            d: 3,
+            c: 2,
+            a: 1,
+            ...g,
+            b: 5,
+          },
+          d: {},
+          c: {},
+          ...g,
+          b: {
+            a: 1,
+            b: 2,
+          },
         })
       `,
-      errors: [{
-        message: 'Expected class names to be in ascending order. \'a\' should be before \'b\'.',
-      }],
-    },
-    {
-      code: `
+      output: `
         const styles = StyleSheet.create({
-          ['b']: {},
-          [\`a\`]: {},
+          a: {
+            x: 1,
+            y: 2,
+            ...c,
+            a: 1,
+            c: 2,
+            d: 3,
+            ...g,
+            b: 5,
+          },
+          c: {},
+          d: {},
+          ...g,
+          b: {
+            a: 1,
+            b: 2,
+          },
         })
       `,
-      errors: [{
-        message: 'Expected class names to be in ascending order. \'a\' should be before \'b\'.',
-      }],
-    },
-    {
-      code: `
-        const a = 'a';
-        const b = 'b';
-        const styles = StyleSheet.create({
-          [\`\${a}-\${b}-b\`]: {},
-          [\`a-\${b}-a\`]: {},
-        })
-      `,
-      errors: [{
-        message: 'Expected class names to be in ascending order. \'a-b-a\' should be before \'a-b-b\'.',
-      }],
+      errors: [
+        {
+          message: "Expected style properties to be in ascending order. 'x' should be before 'y'.",
+        },
+        {
+          message: "Expected style properties to be in ascending order. 'c' should be before 'd'.",
+        },
+        {
+          message: "Expected class names to be in ascending order. 'c' should be before 'd'.",
+        },
+      ],
     },
   ],
 };
