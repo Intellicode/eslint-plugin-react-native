@@ -597,6 +597,34 @@ const tests = {
         },
       ],
     },
+    {
+      code: `
+        StyleSheet.create({
+          myClass: {
+            y: 2,
+            x: 1,
+            z: 3,
+          },
+        })
+        `,
+      errors: [{
+        message: 'Expected style properties to be in ascending order. \'x\' should be before \'y\'.',
+      }],
+    },
+    {
+      code: `
+        export default StyleSheet.create({
+          myClass: {
+            y: 2,
+            x: 1,
+            z: 3,
+          },
+        })
+        `,
+      errors: [{
+        message: 'Expected style properties to be in ascending order. \'x\' should be before \'y\'.',
+      }],
+    },
   ],
 };
 
@@ -616,4 +644,4 @@ const config = {
 tests.valid.forEach(t => Object.assign(t, config));
 tests.invalid.forEach(t => Object.assign(t, config));
 
-ruleTester.run('no-unused-styles', rule, tests);
+ruleTester.run('sort-styles', rule, tests);
