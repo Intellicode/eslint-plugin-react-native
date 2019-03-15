@@ -400,88 +400,20 @@ const tests = {
       output: `
         const styles = StyleSheet.create({
           a: {
-            a: 1,
-            b: 2,
+            d: 4,
             // comments 1
             c: 3,
-            d: 4,
+            a: 1,
+            b: 2,
           },
+          d: {},
+          c: {},
           // comments 2
           b: {
             a: 1,
             b: 2,
           },
-          c: {},
-          d: {},
           // comments 3
-        })
-      `,
-      errors: [
-        {
-          message:
-            "Expected style properties to be in ascending order. 'c' should be before 'd'.",
-        },
-        {
-          message:
-            "Expected class names to be in ascending order. 'c' should be before 'd'.",
-        },
-      ],
-    },
-    {
-      code: `
-        const styles = StyleSheet.create({
-          a: {
-            d: 4,
-            // singleline 1
-            // singleline 2
-            // singleline 3
-            c: 3,
-            a: 1,
-            b: 2,
-          },
-          d: {},
-          c: {},
-          /*
-          multiline 1
-          */
-          /*
-          multiline 2
-          */
-          /*
-          multiline 3
-          */
-          b: {
-            a: 1,
-            b: 2,
-          },
-        })
-      `,
-      output: `
-        const styles = StyleSheet.create({
-          a: {
-            a: 1,
-            b: 2,
-            // singleline 1
-            // singleline 2
-            // singleline 3
-            c: 3,
-            d: 4,
-          },
-          /*
-          multiline 1
-          */
-          /*
-          multiline 2
-          */
-          /*
-          multiline 3
-          */
-          b: {
-            a: 1,
-            b: 2,
-          },
-          c: {},
-          d: {},
         })
       `,
       errors: [
