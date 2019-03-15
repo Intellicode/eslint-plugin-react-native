@@ -142,6 +142,52 @@ const tests = {
         })
       `,
     },
+    {
+      code: `
+      const styles = StyleSheet.create({
+        a: {
+          margin: 1,
+          marginLeft: 1,
+        },
+        b: {
+          border: 1,
+          borderLeft: 1,
+        },
+        c: {
+          padding: 1,
+          paddingLeft: 1,
+        },
+        d: {
+          flex: 1,
+          flexGrow: 1,
+        }
+      })
+      `,
+      options: ['asc'],
+    },
+    {
+      code: `
+      const styles = StyleSheet.create({
+        d: {
+          marginLeft: 1,
+          margin: 1,
+        },
+        c: {
+          border: 1,
+          borderLeft: 1,
+        },
+        b: {
+          padding: 1,
+          paddingLeft: 1,
+        },
+        a: {
+          flex: 1,
+          flexGrow: 1,
+        }
+      })
+      `,
+      options: ['desc'],
+    },
   ],
   invalid: [
     {
@@ -165,7 +211,8 @@ const tests = {
           `,
       errors: [
         {
-          message: "Expected style properties to be in ascending order. 'x' should be before 'y'.",
+          message:
+            "Expected style properties to be in ascending order. 'x' should be before 'y'.",
         },
       ],
     },
@@ -196,7 +243,8 @@ const tests = {
         `,
       errors: [
         {
-          message: "Expected class names to be in ascending order. 'a' should be before 'b'.",
+          message:
+            "Expected class names to be in ascending order. 'a' should be before 'b'.",
         },
       ],
     },
@@ -222,7 +270,8 @@ const tests = {
         `,
       errors: [
         {
-          message: "Expected class names to be in ascending order. 'c' should be before 'd'.",
+          message:
+            "Expected class names to be in ascending order. 'c' should be before 'd'.",
         },
       ],
     },
@@ -241,7 +290,8 @@ const tests = {
         `,
       errors: [
         {
-          message: "Expected class names to be in ascending order. 'a' should be before 'b'.",
+          message:
+            "Expected class names to be in ascending order. 'a' should be before 'b'.",
         },
       ],
     },
@@ -314,13 +364,16 @@ const tests = {
       `,
       errors: [
         {
-          message: "Expected style properties to be in ascending order. 'x' should be before 'y'.",
+          message:
+            "Expected style properties to be in ascending order. 'x' should be before 'y'.",
         },
         {
-          message: "Expected style properties to be in ascending order. 'c' should be before 'd'.",
+          message:
+            "Expected style properties to be in ascending order. 'c' should be before 'd'.",
         },
         {
-          message: "Expected class names to be in ascending order. 'c' should be before 'd'.",
+          message:
+            "Expected class names to be in ascending order. 'c' should be before 'd'.",
         },
       ],
     },
@@ -439,6 +492,176 @@ const tests = {
         {
           message:
             "Expected class names to be in ascending order. 'c' should be before 'd'.",
+        },
+      ],
+    },
+    {
+      code: `
+      const styles = StyleSheet.create({
+        a: {
+          z: 1,
+          margin: 1,
+          b: 1,
+          marginLeft: 1,
+          a: 1,
+        },
+        b: {
+          z: 1,
+          b: 1,
+          border: 1,
+          borderLeft: 1,
+          a: 1,
+        },
+        c: {
+          z: 1,
+          padding: 1,
+          paddingLeft: 1,
+          b: 1,
+          a: 1,
+        },
+        d: {
+          flex: 1,
+          z: 1,
+          b: 1,
+          flexGrow: 1,
+          a: 1,
+        }
+      })
+      `,
+      output: `
+      const styles = StyleSheet.create({
+        a: {
+          a: 1,
+          b: 1,
+          margin: 1,
+          marginLeft: 1,
+          z: 1,
+        },
+        b: {
+          a: 1,
+          b: 1,
+          border: 1,
+          borderLeft: 1,
+          z: 1,
+        },
+        c: {
+          a: 1,
+          b: 1,
+          padding: 1,
+          paddingLeft: 1,
+          z: 1,
+        },
+        d: {
+          a: 1,
+          b: 1,
+          flex: 1,
+          flexGrow: 1,
+          z: 1,
+        }
+      })
+      `,
+      options: ['asc'],
+      errors: [
+        {
+          message:
+            "Expected style properties to be in ascending order. 'margin' should be before 'z'.",
+        },
+        {
+          message:
+            "Expected style properties to be in ascending order. 'b' should be before 'z'.",
+        },
+        {
+          message:
+            "Expected style properties to be in ascending order. 'padding' should be before 'z'.",
+        },
+        {
+          message:
+            "Expected style properties to be in ascending order. 'b' should be before 'z'.",
+        },
+      ],
+    },
+    {
+      code: `
+      const styles = StyleSheet.create({
+        d: {
+          a: 1,
+          marginLeft: 1,
+          b: 1,
+          margin: 1,
+          z: 1,
+        },
+        c: {
+          a: 1,
+          b: 1,
+          border: 1,
+          borderLeft: 1,
+          z: 1,
+        },
+        b: {
+          a: 1,
+          padding: 1,
+          paddingLeft: 1,
+          b: 1,
+          z: 1,
+        },
+        a: {
+          flex: 1,
+          a: 1,
+          b: 1,
+          flexGrow: 1,
+          z: 1,
+        }
+      })
+      `,
+      output: `
+      const styles = StyleSheet.create({
+        d: {
+          z: 1,
+          marginLeft: 1,
+          margin: 1,
+          b: 1,
+          a: 1,
+        },
+        c: {
+          z: 1,
+          border: 1,
+          borderLeft: 1,
+          b: 1,
+          a: 1,
+        },
+        b: {
+          z: 1,
+          padding: 1,
+          paddingLeft: 1,
+          b: 1,
+          a: 1,
+        },
+        a: {
+          z: 1,
+          flex: 1,
+          flexGrow: 1,
+          b: 1,
+          a: 1,
+        }
+      })
+      `,
+      options: ['desc'],
+      errors: [
+        {
+          message:
+            "Expected style properties to be in descending order. 'marginLeft' should be before 'a'.",
+        },
+        {
+          message:
+            "Expected style properties to be in descending order. 'b' should be before 'a'.",
+        },
+        {
+          message:
+            "Expected style properties to be in descending order. 'padding' should be before 'a'.",
+        },
+        {
+          message:
+            "Expected style properties to be in descending order. 'b' should be before 'a'.",
         },
       ],
     },
