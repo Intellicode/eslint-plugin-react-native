@@ -64,6 +64,14 @@ In order to whitelist all *browser-like* globals, add `react-native/react-native
 }
 ```
 
+To use another stylesheet providers.
+
+```json
+settings: {
+    'react-native/style-sheet-object-names': ['EStyleSheet', 'OtherStyleSheet', 'PStyleSheet']
+}
+```
+
 Finally, enable all of the rules that you would like to use.
 
 ```json
