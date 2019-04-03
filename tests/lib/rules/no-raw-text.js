@@ -171,7 +171,23 @@ const config = {
   },
 };
 
+const TSConfig = {
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 2018,
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+    },
+  },
+};
+
 tests.valid.forEach(t => Object.assign(t, config));
 tests.invalid.forEach(t => Object.assign(t, config));
+
+ruleTester.run('no-raw-text', rule, tests);
+
+tests.valid.forEach(t => Object.assign(t, TSConfig));
+tests.invalid.forEach(t => Object.assign(t, TSConfig));
 
 ruleTester.run('no-raw-text', rule, tests);
