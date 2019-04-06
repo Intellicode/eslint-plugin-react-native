@@ -4,7 +4,7 @@ ESLint plugin for React Native
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/Intellicode/eslint-plugin-react-native.svg)](https://greenkeeper.io/)
 
-[![Maintenance Status][status-image]][status-url] [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][deps-image]][deps-url] [![Coverage Status][coverage-image]][coverage-url] [![Code Climate][climate-image]][climate-url] [![BCH compliance][bettercode-image]][bettercode-url]
+[![Maintenance Status][status-image]][status-url] [![NPM version][npm-image]][npm-url] [![Dependency Status][deps-image]][deps-url] [![Coverage Status][coverage-image]][coverage-url] [![Code Climate][climate-image]][climate-url] [![BCH compliance][bettercode-image]][bettercode-url]
 
 React Native specific linting rules for ESLint. This repository is structured like  (and contains code from) the excellent [eslint-plugin-react](http://github.com/yannickcr/eslint-plugin-react).
 
@@ -97,9 +97,6 @@ Finally, enable all of the rules that you would like to use.
 
 [npm-url]: https://npmjs.org/package/eslint-plugin-react-native
 [npm-image]: http://img.shields.io/npm/v/eslint-plugin-react-native.svg?style=flat-square
-
-[travis-url]: https://travis-ci.org/Intellicode/eslint-plugin-react-native
-[travis-image]: http://img.shields.io/travis/Intellicode/eslint-plugin-react-native/master.svg?style=flat-square
 
 [deps-url]: https://david-dm.org/Intellicode/eslint-plugin-react-native
 [deps-image]: https://img.shields.io/david/dev/Intellicode/eslint-plugin-react-native.svg?style=flat-square
