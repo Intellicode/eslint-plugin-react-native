@@ -5,10 +5,10 @@
   "description": "React Native specific linting rules for ESLint",
   "main": "index.js",
   "scripts": {
-    "coveralls": "cat ./reports/coverage/lcov.info | coveralls",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint ./lib && eslint ./tests",
     "test": "npm run lint && npm run unit-test",
-    "unit-test": "istanbul cover --dir reports/coverage node_modules/mocha/bin/_mocha tests/**/*.js -- --reporter dot"
+    "unit-test": "nyc --silent --reporter=text mocha tests/**/*.js"
   },
   "files": [
     "LICENSE",
@@ -25,14 +25,14 @@
   "devDependencies": {
     "@typescript-eslint/parser": "^1.4.2",
     "babel-eslint": "10.0.1",
-    "coveralls": "^3.0.2",
+    "coveralls": "^3.0.3",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "15.1.0",
     "eslint-plugin-import": "^2.0.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.3.0",
-    "istanbul": "0.4.5",
     "mocha": "^5.2.0",
+    "nyc": "^14.0.0",
     "typescript": "^3.3.3333"
   },
   "peerDependencies": {
