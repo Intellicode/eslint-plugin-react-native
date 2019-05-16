@@ -67,6 +67,28 @@ const tests = {
         }
       `,
     },
+    {
+      code: `
+        const styles = EStyleSheet.create({
+            $red: 'red',
+            $blue: 'blue',
+            style1: {
+                color: '$red',
+            },
+            style2: {
+                color: '$blue',
+            }
+        });
+        export default class MyComponent extends Component {
+            render() {
+                const isDanger = true;
+                return <View 
+                           style={[styles.style1, isDanger ? styles.style1 : styles.style2]}
+                       />;
+            }
+        }
+      `,
+    },
   ],
   invalid: [
     {
@@ -186,6 +208,12 @@ const config = {
       classes: true,
       jsx: true,
     },
+  },
+  settings: {
+    'react-native/style-sheet-object-names': [
+      'StyleSheet',
+      'EStyleSheet',
+    ],
   },
 };
 
