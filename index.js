@@ -9,6 +9,7 @@ const allRules = {
   'sort-styles': require('./lib/rules/sort-styles'),
   'split-platform-components': require('./lib/rules/split-platform-components'),
   'no-raw-text': require('./lib/rules/no-raw-text'),
+  'no-single-element-style-arrays': require('./lib/rules/no-single-element-style-arrays'),
 };
 
 function configureAsError(rules) {
@@ -34,6 +35,7 @@ module.exports = {
     'sort-styles': 0,
     'split-platform-components': 0,
     'no-raw-text': 0,
+    'no-single-element-style-arrays': 0
   },
   environments: {
     'react-native': {
