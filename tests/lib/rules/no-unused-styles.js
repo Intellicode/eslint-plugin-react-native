@@ -215,6 +215,31 @@ const tests = {
         }
       });
     `,
+  }, {
+    code: `
+      import RN from 'react-native';
+      const styles = RN.StyleSheet.create({
+        name: {}
+      });
+      const Hello = React.createClass({
+        render: function() {
+          return <Text textStyle={styles.name}>Hello {this.props.name}</Text>;
+        }
+      });
+    `,
+  }, {
+    code: `
+    import React from 'react';
+    import RN from 'react-native';
+      const styles = RN.StyleSheet.create({
+        name: {}
+      });
+      const Hello = React.createClass({
+        render: function() {
+          return <Text textStyle={styles.name}>Hello {this.props.name}</Text>;
+        }
+      });
+    `,
   }],
 
   invalid: [{
@@ -276,6 +301,22 @@ const tests = {
     errors: [{
       message: 'Unused style detected: styles.bar',
     }],
+  }, {
+    code: `
+      import RN from 'react-native';
+      const styles = RN.StyleSheet.create({
+        name: {}
+      });
+      const Hello = React.createClass({
+        render: function() {
+          return <Text>Hello {this.props.name}</Text>;
+        }
+      });
+    `,
+    errors: [{
+      message: 'Unused style detected: styles.name',
+    }],
+
   }],
 };
 
