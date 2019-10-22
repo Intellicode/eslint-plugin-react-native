@@ -1,5 +1,10 @@
 {
   "extends": "airbnb",
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
   "rules": {
     "strict": [0, "global"],
     "func-names": 0,
