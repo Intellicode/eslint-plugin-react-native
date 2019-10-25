@@ -9,8 +9,8 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
+const { RuleTester } = require('eslint');
 const rule = require('../../../lib/rules/no-unused-styles');
-const RuleTester = require('eslint').RuleTester;
 
 require('babel-eslint');
 
@@ -280,7 +280,7 @@ const tests = {
 };
 
 const config = {
-  parser: 'babel-eslint',
+  parser: require.resolve('babel-eslint'),
   parserOptions: {
     ecmaFeatures: {
       classes: true,
@@ -292,7 +292,7 @@ const config = {
   },
 };
 
-tests.valid.forEach(t => Object.assign(t, config));
-tests.invalid.forEach(t => Object.assign(t, config));
+tests.valid.forEach((t) => Object.assign(t, config));
+tests.invalid.forEach((t) => Object.assign(t, config));
 
 ruleTester.run('no-unused-styles', rule, tests);

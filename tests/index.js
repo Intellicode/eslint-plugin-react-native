@@ -3,14 +3,14 @@
 
 'use strict';
 
-const plugin = require('..');
 
 const assert = require('assert');
 const fs = require('fs');
 const path = require('path');
+const plugin = require('..');
 
 const rules = fs.readdirSync(path.resolve(__dirname, '../lib/rules/'))
-  .map(f => path.basename(f, '.js'));
+  .map((f) => path.basename(f, '.js'));
 
 const defaultSettings = {
   'jsx-uses-vars': 1,

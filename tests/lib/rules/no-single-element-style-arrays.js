@@ -11,7 +11,7 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const RuleTester = require('eslint').RuleTester;
+const { RuleTester } = require('eslint');
 const rule = require('../../../lib/rules/no-single-element-style-arrays');
 
 require('babel-eslint');
@@ -22,7 +22,7 @@ const unnecessaryArrayMessage = 'Single element style arrays are not necessary a
 // Tests
 // ------------------------------------------------------------------------------
 const config = {
-  parser: 'babel-eslint',
+  parser: require.resolve('babel-eslint'),
   parserOptions: {
     ecmaFeatures: {
       classes: true,
@@ -77,4 +77,3 @@ ruleTester.run('single-element-style-array', rule, {
 
   ],
 });
-
