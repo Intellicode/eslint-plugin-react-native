@@ -95,7 +95,7 @@ Finally, enable all of the rules that you would like to use.
 * [no-inline-styles](docs/rules/no-inline-styles.md): Detect JSX components with inline styles that contain literal values
 * [no-color-literals](docs/rules/no-color-literals.md): Detect `StyleSheet` rules and inline styles containing color literals instead of variables
 * [no-raw-text](docs/rules/no-raw-text.md): Detect raw text outside of `Text`  component
-* [no-single-element-style-arrays](docs/rules/no-raw-text.md): No style arrays that have 1 element only `<View style={[{height: 10}]}/>`
+* [no-single-element-style-arrays](docs/rules/no-single-element-style-arrays.md): No style arrays that have 1 element only `<View style={[{height: 10}]}/>`
 
 [npm-url]: https://npmjs.org/package/eslint-plugin-react-native
 [npm-image]: http://img.shields.io/npm/v/eslint-plugin-react-native.svg?style=flat-square
