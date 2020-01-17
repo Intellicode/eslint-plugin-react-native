@@ -48,6 +48,7 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "@babel/traverse": "^7.7.4",
     "eslint-plugin-react-native-globals": "^0.1.1"
   }
 }

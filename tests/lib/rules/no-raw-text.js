@@ -97,6 +97,14 @@ const tests = {
       `,
       options: [{ skip: ['Title'] }],
     },
+    {
+      code: `
+        const Title = ({ children }) => (<Title.Text>{children}</Title.Text>);
+        Title.Text = ({ children }) => (<Text>{children}</Text>);
+        <Title.Text>This is the title</Title.Text>
+      `,
+      options: [{ skip: ['Title.Text'] }],
+    },
   ],
   invalid: [
     {
@@ -154,6 +162,16 @@ const tests = {
         <Component>some text</Component>
       `,
       options: [{ skip: ['Title'] }],
+      errors: [{
+        message: 'Raw text (some text) cannot be used outside of a <Text> tag',
+      }],
+    },
+    {
+      code: `
+        const Component = ({ children }) => (<Text>{children}</Text>);
+        <Component>some text</Component>
+      `,
+      options: [{ skip: ['Component.Text'] }],
       errors: [{
         message: 'Raw text (some text) cannot be used outside of a <Text> tag',
       }],
