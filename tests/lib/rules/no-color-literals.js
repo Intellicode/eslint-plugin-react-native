@@ -79,9 +79,11 @@ const tests = {
           }
         });
       `,
-      errors: [{
-        message: 'Color literal: { backgroundColor: \'#FFFFFF\' }',
-      }],
+      errors: [
+        {
+          message: "Color literal: { backgroundColor: '#FFFFFF' }",
+        },
+      ],
     },
     {
       code: `
@@ -93,9 +95,11 @@ const tests = {
           }
         });
       `,
-      errors: [{
-        message: 'Color literal: { backgroundColor: \'#FFFFFF\' }',
-      }],
+      errors: [
+        {
+          message: "Color literal: { backgroundColor: '#FFFFFF' }",
+        },
+      ],
     },
     {
       code: `
@@ -110,9 +114,11 @@ const tests = {
           }
         });
       `,
-      errors: [{
-        message: 'Color literal: { fontColor: \'#000\' }',
-      }],
+      errors: [
+        {
+          message: "Color literal: { fontColor: '#000' }",
+        },
+      ],
     },
     {
       code: `
@@ -124,9 +130,11 @@ const tests = {
           }
         });
       `,
-      errors: [{
-        message: 'Color literal: { backgroundColor: \'#FFFFFF\' }',
-      }],
+      errors: [
+        {
+          message: "Color literal: { backgroundColor: '#FFFFFF' }",
+        },
+      ],
     },
     {
       code: `
@@ -139,9 +147,11 @@ const tests = {
           }
         });
       `,
-      errors: [{
-        message: 'Color literal: { backgroundColor: \'#FFFFFF\' }',
-      }],
+      errors: [
+        {
+          message: "Color literal: { backgroundColor: '#FFFFFF' }",
+        },
+      ],
     },
     {
       code: `
@@ -166,13 +176,14 @@ const tests = {
       `,
       errors: [
         {
-          message: 'Color literal: { color: \'red\' }',
+          message: "Color literal: { color: 'red' }",
         },
         {
-          message: 'Color literal: { borderBottomColor: \'blue\' }',
+          message: "Color literal: { borderBottomColor: 'blue' }",
         },
         {
-          message: 'Color literal: { backgroundColor: \'someBoolean ? \\\'#fff\\\' : \\\'#000\\\'\' }', //eslint-disable-line
+          message:
+            "Color literal: { backgroundColor: \"someBoolean ? '#fff' : '#000'\" }",
         },
       ],
     },
