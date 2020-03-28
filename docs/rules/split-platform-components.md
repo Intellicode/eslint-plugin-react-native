@@ -101,3 +101,30 @@ export default function Hello() {
   return <ActivityIndicatiorIOS/>
 }
 ```
+
+## Rule Options
+
+```js
+...
+"react-native/split-platform-components": [ <enabled>, {
+  androidPathRegex: <string>,
+  iosPathRegex: <string>
+}]
+...
+```
+
+### `androidPathRegex`
+
+A RegExp pattern to use for Android platform components. You can include other custom filenames like so:
+
+```js
+'react-native/split-platform-components': [2, {androidPathRegex: '\\.android.(js|jsx|ts|tsx)$'}]
+```
+
+### `iosPathRegex`
+
+A RegExp pattern to use for iOS platform components. You can include other custom filenames like so:
+
+```js
+'react-native/split-platform-components': [2, {iosPathRegex: '\\.ios.(js|jsx|ts|tsx)$'}]
+```
