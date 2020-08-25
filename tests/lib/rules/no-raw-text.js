@@ -35,6 +35,15 @@ const tests = {
       code: `
         export default class MyComponent extends Component {
           render() {
+            return (<View><Text style={{color: 'red'}}>some text</Text></View>);
+          }
+        }
+      `,
+    },
+    {
+      code: `
+        export default class MyComponent extends Component {
+          render() {
             const text = 'some text';
             return (<View><Text>{\`\${text}\`}</Text></View>);
           }

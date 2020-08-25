@@ -172,7 +172,7 @@ const tests = {
           message: 'Color literal: { borderBottomColor: \'blue\' }',
         },
         {
-          message: 'Color literal: { backgroundColor: \'someBoolean ? \\\'#fff\\\' : \\\'#000\\\'\' }', //eslint-disable-line
+          message: 'Color literal: { backgroundColor: "someBoolean ? \'#fff\' : \'#000\'" }',
         },
       ],
     },

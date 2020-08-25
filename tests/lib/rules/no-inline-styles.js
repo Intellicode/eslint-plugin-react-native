@@ -186,7 +186,7 @@ const tests = {
         }
       `,
       errors: [{
-        message: 'Inline style: { backgroundColor: \'someBoolean ? \\\'#fff\\\' : \\\'#000\\\'\' }', //eslint-disable-line
+        message: 'Inline style: { backgroundColor: "someBoolean ? \'#fff\' : \'#000\'" }',
       }],
     },
   ],
