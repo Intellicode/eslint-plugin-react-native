@@ -105,6 +105,15 @@ const tests = {
       `,
       options: [{ skip: ['Title.Text'] }],
     },
+    {
+      code: `
+        export default class MyComponent extends Component {
+          render() {
+            return (<View><Text style={{color: 'red'}}>some text</Text></View>);
+          }
+        }
+      `,
+    },
   ],
   invalid: [
     {
