@@ -194,6 +194,32 @@ const tests = {
       code: `
           const styles = StyleSheet.create({
             myClass: {
+              flex: 1,
+              flexDirection: 'row',
+              backgroundColor: 'red',
+            },
+          })
+          `,
+      output: `
+          const styles = StyleSheet.create({
+            myClass: {
+              backgroundColor: 'red',
+              flex: 1,
+              flexDirection: 'row',
+            },
+          })
+          `,
+      errors: [
+        {
+          message:
+            "Expected style properties to be in ascending order. 'backgroundColor' should be before 'flexDirection'.",
+        },
+      ],
+    },
+    {
+      code: `
+          const styles = StyleSheet.create({
+            myClass: {
               y: 2,
               x: 1,
               z: 3,
