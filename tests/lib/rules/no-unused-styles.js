@@ -112,7 +112,7 @@ const tests = {
       });
       const Hello = React.createClass({
         getInitialState: function() {
-          return { condition: true, condition2: true };
+          return { condition: true, condition2: true }; 
         },
         render: function() {
           return (
@@ -135,7 +135,7 @@ const tests = {
       });
       const Hello = React.createClass({
         getInitialState: function() {
-          return { condition: true };
+          return { condition: true }; 
         },
         render: function() {
           return (
@@ -175,7 +175,7 @@ const tests = {
     code: `
       const Hello = React.createClass({
         getInitialState: function() {
-          return { condition: true };
+          return { condition: true }; 
         },
         render: function() {
           const myStyle = this.state.condition ? styles.text : styles.text2;
