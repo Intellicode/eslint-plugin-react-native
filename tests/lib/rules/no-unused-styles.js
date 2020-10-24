@@ -112,7 +112,7 @@ const tests = {
       });
       const Hello = React.createClass({
         getInitialState: function() {
-          return { condition: true, condition2: true }; 
+          return { condition: true, condition2: true };
         },
         render: function() {
           return (
@@ -135,7 +135,7 @@ const tests = {
       });
       const Hello = React.createClass({
         getInitialState: function() {
-          return { condition: true }; 
+          return { condition: true };
         },
         render: function() {
           return (
@@ -175,7 +175,7 @@ const tests = {
     code: `
       const Hello = React.createClass({
         getInitialState: function() {
-          return { condition: true }; 
+          return { condition: true };
         },
         render: function() {
           const myStyle = this.state.condition ? styles.text : styles.text2;
@@ -275,6 +275,16 @@ const tests = {
     `,
     errors: [{
       message: 'Unused style detected: styles.bar',
+    }],
+  }, {
+    code: `
+      const styles = StyleSheet.create({
+        text: {}
+      })
+      const Hello = () => (<><Text style={styles.b}>Hello</Text></>);
+    `,
+    errors: [{
+      message: 'Unused style detected: styles.text',
     }],
   }],
 };
