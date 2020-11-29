@@ -276,6 +276,16 @@ const tests = {
     errors: [{
       message: 'Unused style detected: styles.bar',
     }],
+  }, {
+    code: `
+      const styles = StyleSheet.create({
+        text: {}
+      })
+      const Hello = () => (<><Text style={styles.b}>Hello</Text></>);
+    `,
+    errors: [{
+      message: 'Unused style detected: styles.text',
+    }],
   }],
 };
 
