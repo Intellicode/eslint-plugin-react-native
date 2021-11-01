@@ -20,8 +20,9 @@ require('babel-eslint');
 
 const ruleTester = new RuleTester();
 const tests = {
-  valid: [{
-    code: `
+  valid: [
+    {
+      code: `
       const styles = StyleSheet.create({
         name: {}
       });
@@ -31,8 +32,22 @@ const tests = {
         }
       });
     `,
-  }, {
-    code: `
+    },
+    {
+      code: `
+      const styles = StyleSheet.create({
+        name: {}
+      });
+      const Hello = React.createClass({
+        render: function() {
+          const { name } = styles;
+          return <Text textStyle={name}>Hello {this.props.name}</Text>;
+        }
+      });
+    `,
+    },
+    {
+      code: `
       const Hello = React.createClass({
         render: function() {
           return <Text textStyle={styles.name}>Hello {this.props.name}</Text>;
@@ -42,8 +57,9 @@ const tests = {
         name: {}
       });
     `,
-  }, {
-    code: `
+    },
+    {
+      code: `
       const styles = StyleSheet.create({
         name: {}
       });
@@ -53,8 +69,9 @@ const tests = {
         }
       });
     `,
-  }, {
-    code: `
+    },
+    {
+      code: `
       const styles = StyleSheet.create({
         name: {},
         welcome: {}
@@ -70,8 +87,9 @@ const tests = {
         }
       });
     `,
-  }, {
-    code: `
+    },
+    {
+      code: `
       const styles = StyleSheet.create({
         text: {}
       })
@@ -84,8 +102,9 @@ const tests = {
         }
       });
     `,
-  }, {
-    code: `
+    },
+    {
+      code: `
       const styles = StyleSheet.create({
         text: {}
       })
@@ -105,14 +124,15 @@ const tests = {
         }
       });
     `,
-  }, {
-    code: `
+    },
+    {
+      code: `
       const styles = StyleSheet.create({
         text: {}
       });
       const Hello = React.createClass({
         getInitialState: function() {
-          return { condition: true, condition2: true }; 
+          return { condition: true, condition2: true };
         },
         render: function() {
           return (
@@ -127,15 +147,16 @@ const tests = {
         }
       });
     `,
-  }, {
-    code: `
+    },
+    {
+      code: `
       const styles = StyleSheet.create({
         text: {},
         text2: {},
       });
       const Hello = React.createClass({
         getInitialState: function() {
-          return { condition: true }; 
+          return { condition: true };
         },
         render: function() {
           return (
@@ -146,8 +167,9 @@ const tests = {
         }
       });
     `,
-  }, {
-    code: `
+    },
+    {
+      code: `
       const styles = StyleSheet.create({
           style1: {
               color: 'red',
@@ -165,17 +187,19 @@ const tests = {
           }
       }
     `,
-  }, {
-    code: `
+    },
+    {
+      code: `
       const styles = StyleSheet.create({
         text: {}
       })
     `,
-  }, {
-    code: `
+    },
+    {
+      code: `
       const Hello = React.createClass({
         getInitialState: function() {
-          return { condition: true }; 
+          return { condition: true };
         },
         render: function() {
           const myStyle = this.state.condition ? styles.text : styles.text2;
@@ -191,8 +215,9 @@ const tests = {
         text2: {},
       });
     `,
-  }, {
-    code: `
+    },
+    {
+      code: `
       const additionalStyles = {};
       const styles = StyleSheet.create({
         name: {},
@@ -204,8 +229,9 @@ const tests = {
         }
       });
     `,
-  }, {
-    code: `
+    },
+    {
+      code: `
       const styles = OtherStyleSheet.create({
         name: {},
       });
@@ -215,10 +241,12 @@ const tests = {
         }
       });
     `,
-  }],
+    },
+  ],
 
-  invalid: [{
-    code: `
+  invalid: [
+    {
+      code: `
       const styles = StyleSheet.create({
         text: {}
       })
@@ -228,11 +256,14 @@ const tests = {
         }
       });
     `,
-    errors: [{
-      message: 'Unused style detected: styles.text',
-    }],
-  }, {
-    code: `
+      errors: [
+        {
+          message: 'Unused style detected: styles.text',
+        },
+      ],
+    },
+    {
+      code: `
       const styles = StyleSheet.create({
         foo: {},
         bar: {},
@@ -243,11 +274,14 @@ const tests = {
         }
       }
     `,
-    errors: [{
-      message: 'Unused style detected: styles.bar',
-    }],
-  }, {
-    code: `
+      errors: [
+        {
+          message: 'Unused style detected: styles.bar',
+        },
+      ],
+    },
+    {
+      code: `
       const styles = StyleSheet.create({
         foo: {},
         bar: {},
@@ -258,11 +292,14 @@ const tests = {
         }
       }
     `,
-    errors: [{
-      message: 'Unused style detected: styles.bar',
-    }],
-  }, {
-    code: `
+      errors: [
+        {
+          message: 'Unused style detected: styles.bar',
+        },
+      ],
+    },
+    {
+      code: `
       const styles = OtherStyleSheet.create({
         foo: {},
         bar: {},
@@ -273,20 +310,26 @@ const tests = {
         }
       }
     `,
-    errors: [{
-      message: 'Unused style detected: styles.bar',
-    }],
-  }, {
-    code: `
+      errors: [
+        {
+          message: 'Unused style detected: styles.bar',
+        },
+      ],
+    },
+    {
+      code: `
       const styles = StyleSheet.create({
         text: {}
       })
       const Hello = () => (<><Text style={styles.b}>Hello</Text></>);
     `,
-    errors: [{
-      message: 'Unused style detected: styles.text',
-    }],
-  }],
+      errors: [
+        {
+          message: 'Unused style detected: styles.text',
+        },
+      ],
+    },
+  ],
 };
 
 const config = {

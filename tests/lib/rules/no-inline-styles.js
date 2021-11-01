@@ -56,11 +56,11 @@ const tests = {
         });
         export default class MyComponent extends Component {
             render() {
-                const trueColor = '#fff'; const falseColor = '#000' 
-                return <View 
-                   style={[style1, 
-                           this.state.isDanger && styles.style1, 
-                           {color: someBoolean ? trueColor : falseColor }]} 
+                const trueColor = '#fff'; const falseColor = '#000'
+                return <View
+                   style={[style1,
+                           this.state.isDanger && styles.style1,
+                           {color: someBoolean ? trueColor : falseColor }]}
                         />;
             }
         }
@@ -154,7 +154,7 @@ const tests = {
       code: `
         const Hello = React.createClass({
           render: function() {
-            const someBoolean = false; 
+            const someBoolean = false;
             return <Text style={[styles.text, someBoolean && {backgroundColor: '#FFFFFF'}]}>
               Hello {this.props.name}
              </Text>;
@@ -177,16 +177,16 @@ const tests = {
         });
         export default class MyComponent extends Component {
             render() {
-                return <View 
-                   style={[style1, 
-                           this.state.isDanger && styles.style1, 
-                           {backgroundColor: someBoolean ? '#fff' : '#000'}]} 
+                return <View
+                   style={[style1,
+                           this.state.isDanger && styles.style1,
+                           {backgroundColor: someBoolean ? '#fff' : '#000'}]}
                         />;
             }
         }
       `,
       errors: [{
-        message: 'Inline style: { backgroundColor: \'someBoolean ? \\\'#fff\\\' : \\\'#000\\\'\' }', //eslint-disable-line
+        message: `Inline style: { backgroundColor: "someBoolean ? '#fff' : '#000'" }`, //eslint-disable-line
       }],
     },
   ],
