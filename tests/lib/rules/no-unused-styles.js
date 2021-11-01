@@ -50,26 +50,13 @@ const tests = {
       code: `
       const Hello = React.createClass({
         render: function() {
-          const { name } = styles;
-          return <Text textStyle={name}>Hello {this.props.name}</Text>;
-        }
-      });
-      const styles = StyleSheet.create({
-        name: {}
-      });
-    `,
-    },
-    {
-      code: `
-      const Hello = React.createClass({
-        render: function() {
           return <Text textStyle={styles.name}>Hello {this.props.name}</Text>;
         }
       });
       const styles = StyleSheet.create({
         name: {}
       });
-    `,
+      `,
     },
     {
       code: `
@@ -88,26 +75,8 @@ const tests = {
       code: `
       const styles = StyleSheet.create({
         name: {}
-      });
-      const Hello = React.createClass({
-        render: function() {
-          return <Text style={styles.name}>Hello {this.props.name}</Text>;
-        }
-      });
-    `,
-    },
-    {
-      code: `
-      const styles = StyleSheet.create({
-        name: {}
-      });
-      const Hello = React.createClass({
-        render: function() {
-          const { name } = styles;
-          return <Text style={name}>Hello {this.props.name}</Text>;
-        }
-      });
-    `,
+      })
+      `,
     },
     {
       code: `
