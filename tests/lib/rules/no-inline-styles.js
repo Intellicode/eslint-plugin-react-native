@@ -20,7 +20,6 @@ require('babel-eslint');
 
 const ruleTester = new RuleTester();
 
-
 const tests = {
 
   valid: [
