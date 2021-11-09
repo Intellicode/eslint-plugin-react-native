@@ -37,7 +37,7 @@ const tests = {
         export default class MyComponent extends Component {
             render() {
                 const isDanger = true;
-                return <View 
+                return <View
                            style={[styles.style1, isDanger ? styles.style1 : styles.style2]}
                        />;
             }
@@ -57,11 +57,11 @@ const tests = {
         export default class MyComponent extends Component {
             render() {
                 const trueColor = '#fff';
-                const falseColor = '#000' 
-                return <View 
-                   style={[style1, 
-                           this.state.isDanger && {color: falseColor}, 
-                           {color: someBoolean ? trueColor : falseColor }]} 
+                const falseColor = '#000'
+                return <View
+                   style={[style1,
+                           this.state.isDanger && {color: falseColor},
+                           {color: someBoolean ? trueColor : falseColor }]}
                         />;
             }
         }
@@ -79,9 +79,11 @@ const tests = {
           }
         });
       `,
-      errors: [{
-        message: 'Color literal: { backgroundColor: \'#FFFFFF\' }',
-      }],
+      errors: [
+        {
+          message: "Color literal: { backgroundColor: '#FFFFFF' }",
+        },
+      ],
     },
     {
       code: `
@@ -93,9 +95,11 @@ const tests = {
           }
         });
       `,
-      errors: [{
-        message: 'Color literal: { backgroundColor: \'#FFFFFF\' }',
-      }],
+      errors: [
+        {
+          message: "Color literal: { backgroundColor: '#FFFFFF' }",
+        },
+      ],
     },
     {
       code: `
@@ -110,9 +114,11 @@ const tests = {
           }
         });
       `,
-      errors: [{
-        message: 'Color literal: { fontColor: \'#000\' }',
-      }],
+      errors: [
+        {
+          message: "Color literal: { fontColor: '#000' }",
+        },
+      ],
     },
     {
       code: `
@@ -124,24 +130,28 @@ const tests = {
           }
         });
       `,
-      errors: [{
-        message: 'Color literal: { backgroundColor: \'#FFFFFF\' }',
-      }],
+      errors: [
+        {
+          message: "Color literal: { backgroundColor: '#FFFFFF' }",
+        },
+      ],
     },
     {
       code: `
         const Hello = React.createClass({
           render: function() {
-            const someBoolean = false; 
+            const someBoolean = false;
             return <Text style={[styles.text, someBoolean && {backgroundColor: '#FFFFFF'}]}>
               Hello {this.props.name}
              </Text>;
           }
         });
       `,
-      errors: [{
-        message: 'Color literal: { backgroundColor: \'#FFFFFF\' }',
-      }],
+      errors: [
+        {
+          message: "Color literal: { backgroundColor: '#FFFFFF' }",
+        },
+      ],
     },
     {
       code: `
@@ -156,23 +166,23 @@ const tests = {
         });
         export default class MyComponent extends Component {
             render() {
-                return <View 
-                   style={[style1, 
-                           this.state.isDanger && styles.style1, 
-                           {backgroundColor: someBoolean ? '#fff' : '#000'}]} 
+                return <View
+                   style={[style1,
+                           this.state.isDanger && styles.style1,
+                           {backgroundColor: someBoolean ? '#fff' : '#000'}]}
                         />;
             }
         }
       `,
       errors: [
         {
-          message: 'Color literal: { color: \'red\' }',
+          message: "Color literal: { color: 'red' }",
         },
         {
-          message: 'Color literal: { borderBottomColor: \'blue\' }',
+          message: "Color literal: { borderBottomColor: 'blue' }",
         },
         {
-          message: 'Color literal: { backgroundColor: \'someBoolean ? \\\'#fff\\\' : \\\'#000\\\'\' }', //eslint-disable-line
+          message: `Color literal: { backgroundColor: "someBoolean ? '#fff' : '#000'" }`, //eslint-disable-line
         },
       ],
     },

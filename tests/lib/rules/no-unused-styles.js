@@ -20,8 +20,9 @@ require('babel-eslint');
 
 const ruleTester = new RuleTester();
 const tests = {
-  valid: [{
-    code: `
+  valid: [
+    {
+      code: `
       const styles = StyleSheet.create({
         name: {}
       });
@@ -31,8 +32,22 @@ const tests = {
         }
       });
     `,
-  }, {
-    code: `
+    },
+    {
+      code: `
+      const styles = StyleSheet.create({
+        name: {}
+      });
+      const Hello = React.createClass({
+        render: function() {
+          const { name } = styles;
+          return <Text textStyle={name}>Hello {this.props.name}</Text>;
+        }
+      });
+    `,
+    },
+    {
+      code: `
       const Hello = React.createClass({
         render: function() {
           return <Text textStyle={styles.name}>Hello {this.props.name}</Text>;
@@ -41,20 +56,30 @@ const tests = {
       const styles = StyleSheet.create({
         name: {}
       });
-    `,
-  }, {
-    code: `
+      `,
+    },
+    {
+      code: `
+      const Hello = React.createClass({
+        render: function() {
+          const { name } = styles;
+          return <Text textStyle={name}>Hello {this.props.name}</Text>;
+        }
+      });
       const styles = StyleSheet.create({
         name: {}
       });
-      const Hello = React.createClass({
-        render: function() {
-          return <Text style={styles.name}>Hello {this.props.name}</Text>;
-        }
-      });
     `,
-  }, {
-    code: `
+    },
+    {
+      code: `
+      const styles = StyleSheet.create({
+        name: {}
+      })
+      `,
+    },
+    {
+      code: `
       const styles = StyleSheet.create({
         name: {},
         welcome: {}
@@ -70,8 +95,29 @@ const tests = {
         }
       });
     `,
-  }, {
-    code: `
+    },
+    {
+      code: `
+      const styles = StyleSheet.create({
+        name: {},
+        welcome: {}
+      });
+      const Hello = React.createClass({
+        render: function() {
+          const { name } = styles;
+          return <Text style={name}>Hello {this.props.name}</Text>;
+        }
+      });
+      const Welcome = React.createClass({
+        render: function() {
+          const { welcome } = styles;
+          return <Text style={welcome}>Welcome</Text>;
+        }
+      });
+    `,
+    },
+    {
+      code: `
       const styles = StyleSheet.create({
         text: {}
       })
@@ -84,8 +130,25 @@ const tests = {
         }
       });
     `,
-  }, {
-    code: `
+    },
+    {
+      code: `
+      const styles = StyleSheet.create({
+        text: {}
+      })
+      const Hello = React.createClass({
+        propTypes: {
+          textStyle: Text.propTypes.style,
+        },
+        render: function() {
+          const { text } = styles;
+          return <Text style={[text, textStyle]}>Hello {this.props.name}</Text>;
+        }
+      });
+    `,
+    },
+    {
+      code: `
       const styles = StyleSheet.create({
         text: {}
       })
@@ -105,14 +168,39 @@ const tests = {
         }
       });
     `,
-  }, {
-    code: `
+    },
+    {
+      code: `
+      const styles = StyleSheet.create({
+        text: {}
+      })
+      const styles2 = StyleSheet.create({
+        text: {}
+      })
+      const Hello = React.createClass({
+        propTypes: {
+          textStyle: Text.propTypes.style,
+        },
+        render: function() {
+          const { text } = styles;
+          const { text: text2 } = styles2;
+          return (
+            <Text style={[text, text2, textStyle]}>
+             Hello {this.props.name}
+            </Text>
+           );
+        }
+      });
+    `,
+    },
+    {
+      code: `
       const styles = StyleSheet.create({
         text: {}
       });
       const Hello = React.createClass({
         getInitialState: function() {
-          return { condition: true, condition2: true }; 
+          return { condition: true, condition2: true };
         },
         render: function() {
           return (
@@ -127,15 +215,40 @@ const tests = {
         }
       });
     `,
-  }, {
-    code: `
+    },
+    {
+      code: `
+      const styles = StyleSheet.create({
+        text: {}
+      });
+      const Hello = React.createClass({
+        getInitialState: function() {
+          return { condition: true, condition2: true };
+        },
+        render: function() {
+          const { text } = styles;
+          return (
+            <Text
+              style={[
+                this.state.condition &&
+                this.state.condition2 &&
+                text]}>
+              Hello {this.props.name}
+            </Text>
+          );
+        }
+      });
+    `,
+    },
+    {
+      code: `
       const styles = StyleSheet.create({
         text: {},
         text2: {},
       });
       const Hello = React.createClass({
         getInitialState: function() {
-          return { condition: true }; 
+          return { condition: true };
         },
         render: function() {
           return (
@@ -146,8 +259,30 @@ const tests = {
         }
       });
     `,
-  }, {
-    code: `
+    },
+    {
+      code: `
+      const styles = StyleSheet.create({
+        text: {},
+        text2: {},
+      });
+      const Hello = React.createClass({
+        getInitialState: function() {
+          return { condition: true };
+        },
+        render: function() {
+          const { text, text2 } = styles;
+          return (
+            <Text style={[this.state.condition ? text : text2]}>
+              Hello {this.props.name}
+            </Text>
+          );
+        }
+      });
+    `,
+    },
+    {
+      code: `
       const styles = StyleSheet.create({
           style1: {
               color: 'red',
@@ -165,17 +300,40 @@ const tests = {
           }
       }
     `,
-  }, {
-    code: `
+    },
+    {
+      code: `
+      const styles = StyleSheet.create({
+          style1: {
+              color: 'red',
+          },
+          style2: {
+              color: 'blue',
+          }
+      });
+      export default class MyComponent extends Component {
+          static propTypes = {
+              isDanger: PropTypes.bool
+          };
+          render() {
+            const { style1, style2 } = styles;
+              return <View style={this.props.isDanger ? style1 : style2} />;
+          }
+      }
+    `,
+    },
+    {
+      code: `
       const styles = StyleSheet.create({
         text: {}
       })
     `,
-  }, {
-    code: `
+    },
+    {
+      code: `
       const Hello = React.createClass({
         getInitialState: function() {
-          return { condition: true }; 
+          return { condition: true };
         },
         render: function() {
           const myStyle = this.state.condition ? styles.text : styles.text2;
@@ -191,8 +349,31 @@ const tests = {
         text2: {},
       });
     `,
-  }, {
-    code: `
+    },
+    {
+      code: `
+      const Hello = React.createClass({
+        getInitialState: function() {
+          return { condition: true };
+        },
+        render: function() {
+          const { text, text2 } = styles;
+          const myStyle = this.state.condition ? text : text2;
+          return (
+              <Text style={myStyle}>
+                  Hello {this.props.name}
+              </Text>
+          );
+        }
+      });
+      const styles = StyleSheet.create({
+        text: {},
+        text2: {},
+      });
+    `,
+    },
+    {
+      code: `
       const additionalStyles = {};
       const styles = StyleSheet.create({
         name: {},
@@ -204,8 +385,24 @@ const tests = {
         }
       });
     `,
-  }, {
-    code: `
+    },
+    {
+      code: `
+      const additionalStyles = {};
+      const styles = StyleSheet.create({
+        name: {},
+        ...additionalStyles
+      });
+      const Hello = React.createClass({
+        render: function() {
+          const { name } = styles;
+          return <Text textStyle={name}>Hello {this.props.name}</Text>;
+        }
+      });
+    `,
+    },
+    {
+      code: `
       const styles = OtherStyleSheet.create({
         name: {},
       });
@@ -215,10 +412,25 @@ const tests = {
         }
       });
     `,
-  }],
+    },
+    {
+      code: `
+      const styles = OtherStyleSheet.create({
+        name: {},
+      });
+      const Hello = React.createClass({
+        render: function() {
+          const { name } = styles;
+          return <Text textStyle={name}>Hello {this.props.name}</Text>;
+        }
+      });
+    `,
+    },
+  ],
 
-  invalid: [{
-    code: `
+  invalid: [
+    {
+      code: `
       const styles = StyleSheet.create({
         text: {}
       })
@@ -228,11 +440,32 @@ const tests = {
         }
       });
     `,
-    errors: [{
-      message: 'Unused style detected: styles.text',
-    }],
-  }, {
-    code: `
+      errors: [
+        {
+          message: 'Unused style detected: styles.text',
+        },
+      ],
+    },
+    {
+      code: `
+      const styles = StyleSheet.create({
+        text: {}
+      })
+      const Hello = React.createClass({
+        render: function() {
+          const { b } = styles;
+          return <Text style={b}>Hello {this.props.name}</Text>;
+        }
+      });
+    `,
+      errors: [
+        {
+          message: 'Unused style detected: styles.text',
+        },
+      ],
+    },
+    {
+      code: `
       const styles = StyleSheet.create({
         foo: {},
         bar: {},
@@ -243,11 +476,33 @@ const tests = {
         }
       }
     `,
-    errors: [{
-      message: 'Unused style detected: styles.bar',
-    }],
-  }, {
-    code: `
+      errors: [
+        {
+          message: 'Unused style detected: styles.bar',
+        },
+      ],
+    },
+    {
+      code: `
+      const styles = StyleSheet.create({
+        foo: {},
+        bar: {},
+      })
+      class Foo extends React.Component {
+        render() {
+          const { foo } = styles;
+          return <View style={foo}/>;
+        }
+      }
+    `,
+      errors: [
+        {
+          message: 'Unused style detected: styles.bar',
+        },
+      ],
+    },
+    {
+      code: `
       const styles = StyleSheet.create({
         foo: {},
         bar: {},
@@ -258,11 +513,33 @@ const tests = {
         }
       }
     `,
-    errors: [{
-      message: 'Unused style detected: styles.bar',
-    }],
-  }, {
-    code: `
+      errors: [
+        {
+          message: 'Unused style detected: styles.bar',
+        },
+      ],
+    },
+    {
+      code: `
+      const styles = StyleSheet.create({
+        foo: {},
+        bar: {},
+      })
+      class Foo extends React.PureComponent {
+        render() {
+          const { foo } = styles;
+          return <View style={foo}/>;
+        }
+      }
+    `,
+      errors: [
+        {
+          message: 'Unused style detected: styles.bar',
+        },
+      ],
+    },
+    {
+      code: `
       const styles = OtherStyleSheet.create({
         foo: {},
         bar: {},
@@ -273,20 +550,61 @@ const tests = {
         }
       }
     `,
-    errors: [{
-      message: 'Unused style detected: styles.bar',
-    }],
-  }, {
-    code: `
+      errors: [
+        {
+          message: 'Unused style detected: styles.bar',
+        },
+      ],
+    },
+    {
+      code: `
+      const styles = OtherStyleSheet.create({
+        foo: {},
+        bar: {},
+      })
+      class Foo extends React.PureComponent {
+        render() {
+          const { foo } = styles;
+          return <View style={foo}/>;
+        }
+      }
+    `,
+      errors: [
+        {
+          message: 'Unused style detected: styles.bar',
+        },
+      ],
+    },
+    {
+      code: `
       const styles = StyleSheet.create({
         text: {}
       })
       const Hello = () => (<><Text style={styles.b}>Hello</Text></>);
     `,
-    errors: [{
-      message: 'Unused style detected: styles.text',
-    }],
-  }],
+      errors: [
+        {
+          message: 'Unused style detected: styles.text',
+        },
+      ],
+    },
+    {
+      code: `
+      const styles = StyleSheet.create({
+        text: {}
+      })
+      const Hello = () => {
+        const { b } = styles;
+        return <><Text style={styles.b}>Hello</Text></>;
+      }
+    `,
+      errors: [
+        {
+          message: 'Unused style detected: styles.text',
+        },
+      ],
+    },
+  ],
 };
 
 const config = {
