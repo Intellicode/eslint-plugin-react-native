@@ -12,7 +12,7 @@
 const { RuleTester } = require('eslint');
 const rule = require('../../../lib/rules/no-color-literals');
 
-require('babel-eslint');
+require('@babel/eslint-parser');
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -172,7 +172,7 @@ const tests = {
           message: 'Color literal: { borderBottomColor: \'blue\' }',
         },
         {
-          message: 'Color literal: { backgroundColor: \'someBoolean ? \\\'#fff\\\' : \\\'#000\\\'\' }', //eslint-disable-line
+          message: 'Color literal: { backgroundColor: "someBoolean ? \'#fff\' : \'#000\'" }', //eslint-disable-line
         },
       ],
     },
@@ -180,11 +180,16 @@ const tests = {
 };
 
 const config = {
-  parser: require.resolve('babel-eslint'),
+  parser: require.resolve('@babel/eslint-parser'),
   parserOptions: {
-    ecmaFeatures: {
-      classes: true,
-      jsx: true,
+    requireConfigFile: false,
+    babelOptions: {
+      parserOpts: {
+        plugins: [
+          ['estree', { classFeatures: true }],
+          'jsx',
+        ],
+      },
     },
   },
 };

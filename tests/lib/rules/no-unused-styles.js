@@ -12,7 +12,7 @@
 const { RuleTester } = require('eslint');
 const rule = require('../../../lib/rules/no-unused-styles');
 
-require('babel-eslint');
+require('@babel/eslint-parser');
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -290,11 +290,16 @@ const tests = {
 };
 
 const config = {
-  parser: require.resolve('babel-eslint'),
+  parser: require.resolve('@babel/eslint-parser'),
   parserOptions: {
-    ecmaFeatures: {
-      classes: true,
-      jsx: true,
+    requireConfigFile: false,
+    babelOptions: {
+      parserOpts: {
+        plugins: [
+          ['estree', { classFeatures: true }],
+          'jsx',
+        ],
+      },
     },
   },
   settings: {
