@@ -1,6 +1,51 @@
 # Detect unused StyleSheet rules in React components
 When working on a component over a longer period of time, you could end up with unused StyleSheet rules that slipped in over time but are forgotten as you continue to improve your UX/UI design.
 
+
+---
+
+## Options
+
+### `enableImportsCheck: boolean`
+
+`false` - disabled by  default.
+
+> ⚠️ Note: This is an experimental feature and can include bugs
+
+`no-unused-styles` rule works only for single file (because eslint design), 
+and in case when you store styles in the separate files
+this rule doesn't work. So, to enable parsing imported styles you need to enable the next option: 
+
+```js
+// .eslintrc.js
+module.exports = {
+    // ...
+    rules: {
+        'react-native/no-unused-styles': ['error', {enableImportsCheck: true}],
+    },
+};
+```
+
+If you use **typescript** you need provide additional settings to help a plugin resolve `.ts` files:
+
+```tsx
+// .eslintrc.js
+const allExtensions = ['.ts', '.tsx', '.js', '.jsx'];
+
+module.exports = {
+    // ...
+    rules: {
+        'react-native/no-unused-styles': ['error', {enableImportsCheck: true}],
+    },
+    settings: {
+        'import/parsers': {'@typescript-eslint/parser': ['.ts', '.tsx']},
+        'import/resolver': {node: {extensions: allExtensions}},
+    },
+};
+```
+
+---
+
 ## Rule Details
 
 The following patterns are considered warnings:
