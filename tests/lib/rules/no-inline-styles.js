@@ -12,7 +12,7 @@
 const { RuleTester } = require('eslint');
 const rule = require('../../../lib/rules/no-inline-styles');
 
-require('babel-eslint');
+require('@babel/eslint-parser');
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -185,18 +185,23 @@ const tests = {
         }
       `,
       errors: [{
-        message: 'Inline style: { backgroundColor: \'someBoolean ? \\\'#fff\\\' : \\\'#000\\\'\' }', //eslint-disable-line
+        message: 'Inline style: { backgroundColor: "someBoolean ? \'#fff\' : \'#000\'" }', //eslint-disable-line
       }],
     },
   ],
 };
 
 const config = {
-  parser: require.resolve('babel-eslint'),
+  parser: require.resolve('@babel/eslint-parser'),
   parserOptions: {
-    ecmaFeatures: {
-      classes: true,
-      jsx: true,
+    requireConfigFile: false,
+    babelOptions: {
+      parserOpts: {
+        plugins: [
+          ['estree', { classFeatures: true }],
+          'jsx',
+        ],
+      },
     },
   },
 };

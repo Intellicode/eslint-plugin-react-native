@@ -12,7 +12,7 @@
 const { RuleTester } = require('eslint');
 const rule = require('../../../lib/rules/sort-styles');
 
-require('babel-eslint');
+require('@babel/eslint-parser');
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -633,6 +633,15 @@ const tests = {
           },
         })
         `,
+      output: `
+        StyleSheet.create({
+          myClass: {
+            x: 1,
+            y: 2,
+            z: 3,
+          },
+        })
+        `,
       errors: [{
         message: 'Expected style properties to be in ascending order. \'x\' should be before \'y\'.',
       }],
@@ -647,6 +656,15 @@ const tests = {
           },
         })
         `,
+      output: `
+        export default StyleSheet.create({
+          myClass: {
+            x: 1,
+            y: 2,
+            z: 3,
+          },
+        })
+        `,
       errors: [{
         message: 'Expected style properties to be in ascending order. \'x\' should be before \'y\'.',
       }],
@@ -655,11 +673,16 @@ const tests = {
 };
 
 const config = {
-  parser: require.resolve('babel-eslint'),
+  parser: require.resolve('@babel/eslint-parser'),
   parserOptions: {
-    ecmaFeatures: {
-      classes: true,
-      jsx: true,
+    requireConfigFile: false,
+    babelOptions: {
+      parserOpts: {
+        plugins: [
+          ['estree', { classFeatures: true }],
+          'jsx',
+        ],
+      },
     },
   },
   settings: {

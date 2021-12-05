@@ -14,7 +14,7 @@
 const { RuleTester } = require('eslint');
 const rule = require('../../../lib/rules/no-single-element-style-arrays');
 
-require('babel-eslint');
+require('@babel/eslint-parser');
 
 const unnecessaryArrayMessage = 'Single element style arrays are not necessary and cause unnecessary re-renders';
 
@@ -22,11 +22,16 @@ const unnecessaryArrayMessage = 'Single element style arrays are not necessary a
 // Tests
 // ------------------------------------------------------------------------------
 const config = {
-  parser: require.resolve('babel-eslint'),
+  parser: require.resolve('@babel/eslint-parser'),
   parserOptions: {
-    ecmaFeatures: {
-      classes: true,
-      jsx: true,
+    requireConfigFile: false,
+    babelOptions: {
+      parserOpts: {
+        plugins: [
+          ['estree', { classFeatures: true }],
+          'jsx',
+        ],
+      },
     },
   },
   settings: {

@@ -24,10 +24,10 @@
   "bugs": "https://github.com/intellicode/eslint-plugin-react-native/issues",
   "devDependencies": {
     "@typescript-eslint/parser": "^5.3.1",
-    "babel-eslint": "^10.1.0",
+    "@babel/eslint-parser": "^7.16.3",
     "coveralls": "^3.1.1",
-    "eslint": "^7.32.0",
-    "eslint-config-airbnb": "^18.2.1",
+    "eslint": "^8.4.0",
+    "eslint-config-airbnb": "^19.0.2",
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.26.1",
