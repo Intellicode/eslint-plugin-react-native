@@ -114,6 +114,12 @@ const tests = {
         }
       `,
     },
+    {
+      // Testing nested components inside an allowed component
+      code: `
+        <Text>Some text <>More text</></Text>
+      `,
+    },
   ],
   invalid: [
     {
