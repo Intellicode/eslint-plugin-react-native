@@ -8,8 +8,10 @@ const fs = require('fs');
 const path = require('path');
 const plugin = require('..');
 
-const rules = fs.readdirSync(path.resolve(__dirname, '../lib/rules/'))
-  .map((f) => path.basename(f, '.js'));
+const rules = fs
+  .readdirSync(path.resolve(__dirname, '../lib/rules/'))
+  .map((f) => path.basename(f, '.js'))
+  .filter((e) => !(e.endsWith('experimental') || e.endsWith('stable')));
 
 const defaultSettings = {
   'jsx-uses-vars': 1,
