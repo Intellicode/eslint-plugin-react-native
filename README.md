@@ -2,9 +2,13 @@
 ESLint plugin for React Native
 ==============================
 
+# Project update
+
+Dear users, first of all, thanks for using the plugin! At the moment development activity is low, I've personally not worked with React Native for many years and have little time to continue updating the plugin. I'll do my best to update the plugin to ensure compatibility with new eslint versions, but unfortunately I do not have time to asses new features/pull requests. Thanks for your understanding!
+
 [![Greenkeeper badge](https://badges.greenkeeper.io/Intellicode/eslint-plugin-react-native.svg)](https://greenkeeper.io/)
 
-[![Maintenance Status][status-image]][status-url] [![NPM version][npm-image]][npm-url] [![Dependency Status][deps-image]][deps-url] [![Coverage Status][coverage-image]][coverage-url] [![Code Climate][climate-image]][climate-url] [![BCH compliance][bettercode-image]][bettercode-url]
+[![Maintenance Status][status-image]][status-url] [![NPM version][npm-image]][npm-url] [![Coverage Status][coverage-image]][coverage-url] [![Code Climate][climate-image]][climate-url] [![BCH compliance][bettercode-image]][bettercode-url]
 
 React Native specific linting rules for ESLint. This repository is structured like  (and contains code from) the excellent [eslint-plugin-react](http://github.com/yannickcr/eslint-plugin-react).
 
@@ -99,9 +103,6 @@ Finally, enable all of the rules that you would like to use.
 
 [npm-url]: https://npmjs.org/package/eslint-plugin-react-native
 [npm-image]: http://img.shields.io/npm/v/eslint-plugin-react-native.svg?style=flat-square
-
-[deps-url]: https://david-dm.org/Intellicode/eslint-plugin-react-native
-[deps-image]: https://img.shields.io/david/dev/Intellicode/eslint-plugin-react-native.svg?style=flat-square
 
 [coverage-url]: https://coveralls.io/r/Intellicode/eslint-plugin-react-native?branch=master
 [coverage-image]: http://img.shields.io/coveralls/Intellicode/eslint-plugin-react-native/master.svg?style=flat-square
