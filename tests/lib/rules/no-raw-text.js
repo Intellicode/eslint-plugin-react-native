@@ -107,6 +107,14 @@ const tests = {
     },
     {
       code: `
+        const Title = ({ children }) => (<Title.Text>{children}</Title.Text>);
+        Title.Text = ({ children }) => (<Text>{children}</Text>);
+        <Title.Text>This is the title</Title.Text>
+      `,
+      options: [{ skip: ['Title.*'] }],
+    },
+    {
+      code: `
         export default class MyComponent extends Component {
           render() {
             return (<View><Text style={{color: 'red'}}>some text</Text></View>);
