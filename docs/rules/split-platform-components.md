@@ -1,4 +1,11 @@
-# Enforce using platform specific filenames when necessary
+# Enforce using platform specific filenames when necessary (`react-native/split-platform-components`)
+
+💼 This rule is enabled in the 🌐 `all` [config](https://github.com/Intellicode/eslint-plugin-react-native#shareable-configurations).
+
+🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
+
+<!-- end auto-generated rule header -->
+
 When working on a project that supports both Android and IOS, you have to make sure that you
 use platform specific filenames when you use platform specific components to produce the correct
 bundle per platform.
@@ -6,6 +13,7 @@ bundle per platform.
 The following patterns are considered warnings:
 
 filename: Hello.js
+
 ```js
 const React = require('react-native');
 const {
@@ -20,6 +28,7 @@ const Hello = React.createClass({
 ```
 
 filename: Hello.js
+
 ```js
 const React = require('react-native');
 const {
@@ -34,6 +43,7 @@ const Hello = React.createClass({
 ```
 
 Any filename
+
 ```js
 const React = require('react-native');
 const {
@@ -53,6 +63,7 @@ const Hello = React.createClass({
 ```
 
 Using `import` declaration pattern: Hello.js
+
 ```js
 import React from 'react'
 import { ActivityIndicatiorIOS } from 'react-native'
@@ -65,6 +76,7 @@ export default function Hello() {
 The following patterns are not considered warnings:
 
 filename: Hello.ios.js
+
 ```js
 const React = require('react-native');
 const {
@@ -79,6 +91,7 @@ const Hello = React.createClass({
 ```
 
 filename: Hello.android.js
+
 ```js
 const React = require('react-native');
 const {
@@ -93,6 +106,7 @@ const Hello = React.createClass({
 ```
 
 Using `import` declaration pattern: Hello.ios.js
+
 ```js
 import React from 'react'
 import { ActivityIndicatiorIOS } from 'react-native'

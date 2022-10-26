@@ -1,7 +1,12 @@
-# Detect inline styles in components
-It's (subjectively) good practice to separate styles from the view layout, when possible. 
+# Detect JSX components with inline styles that contain literal values (`react-native/no-inline-styles`)
+
+💼 This rule is enabled in the 🌐 `all` [config](https://github.com/Intellicode/eslint-plugin-react-native#shareable-configurations).
+
+<!-- end auto-generated rule header -->
+
+It's (subjectively) good practice to separate styles from the view layout, when possible.
 This rule detects inline style objects when they contain literal values. If inline styles only contain
-variable values, the style is considered acceptable because it's sometimes necessary to set styles 
+variable values, the style is considered acceptable because it's sometimes necessary to set styles
 based on `state` or `props`.
 
 ## Rule Details
@@ -27,6 +32,7 @@ const Hello = React.createClass({
 ```
 
 The following pattern is not considered a warning:
+
 ```js
 const Hello = React.createClass({
   render: function() {
@@ -34,6 +40,7 @@ const Hello = React.createClass({
   }
 });
 ```
+
 Any attribute that contains the word `style` is checked for inline object literals. Both of the following
 are considered warnings:
 

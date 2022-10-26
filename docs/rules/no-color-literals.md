@@ -1,9 +1,14 @@
-# Detect color literals in styles
-When developing UIs, we often find ourselves reusing the same colors in multiple places in the UI. 
+# Detect `StyleSheet` rules and inline styles containing color literals instead of variables (`react-native/no-color-literals`)
+
+💼 This rule is enabled in the 🌐 `all` [config](https://github.com/Intellicode/eslint-plugin-react-native#shareable-configurations).
+
+<!-- end auto-generated rule header -->
+
+When developing UIs, we often find ourselves reusing the same colors in multiple places in the UI.
 If the colors have to be updated, they likely have to be updated across the board. So it's good practice
 to store the color definitions in variables instead of hardcoding them inside styles. This rule
-will detect color properties that have literals (ie strings) as values. 
- 
+will detect color properties that have literals (ie strings) as values.
+
 The rule looks at all properties that contain `color` (case-insensitive) in their name
 in either `StyleSheet` definitions or JSX properties that have `style` in their name.
 
@@ -50,7 +55,6 @@ The following patterns are considered warnings:
     }
   });
 ```
-
 
 The following patterns are not considered warnings:
 

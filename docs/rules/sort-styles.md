@@ -1,4 +1,11 @@
-# Require StyleSheet keys to be sorted
+# Require style definitions to be sorted alphabetically (`react-native/sort-styles`)
+
+💼 This rule is enabled in the 🌐 `all` [config](https://github.com/Intellicode/eslint-plugin-react-native#shareable-configurations).
+
+🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
+
+<!-- end auto-generated rule header -->
+
 It's like [sort-keys](https://eslint.org/docs/rules/sort-keys), but just for React Native styles.
 
 Keeping your style definitions sorted is a common convention that helps with readability. This rule lets you enforce an ascending (default) or descending alphabetical order for both "class names" and style properties.
