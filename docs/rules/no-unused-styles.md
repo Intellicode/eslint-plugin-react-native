@@ -77,6 +77,24 @@ const Hello = React.createClass({
 });
 ```
 
+Dynamic styles are marked as used only if you use a local variable with the same name as the variable in the actual component .
+
+```js
+const getStyles = () => {
+  const styles = StyleSheet.create({
+    name: {}
+  })
+  return styles;
+}
+
+const Hello = React.createClass({
+  render: function() {
+    const styles = getStyles();
+    return <Text textStyle={styles.name}>Hello {this.props.name}</Text>;
+  }
+});
+```
+
 ```js
 const styles = StyleSheet.create({
   name: {},
