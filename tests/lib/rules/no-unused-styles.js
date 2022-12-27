@@ -31,7 +31,23 @@ const tests = {
         }
       });
     `,
-  }, {
+  },
+  {
+    code: `
+      const getStyles = () => {
+        const styles = StyleSheet.create({
+          name: {}
+        })
+      } 
+      const Hello = React.createClass({
+        render: function() {
+          const styles = getStyles();
+          return <Text textStyle={styles.name}>Hello {this.props.name}</Text>;
+        }
+      });
+    `,
+  },
+  {
     code: `
       const Hello = React.createClass({
         render: function() {
