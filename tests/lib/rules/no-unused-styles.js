@@ -249,37 +249,19 @@ const tests = {
   }, {
     code: `
       const getStyles = () => {
-        const styles = StyleSheet.create({
-          name: {}
+        return OtherStyleSheet.create({
+          text: {}
         })
-        return styles
       } 
-      const Hello = React.createClass({
+      const Hi = React.createClass({
         render: function() {
           const globalStyles = getStyles();
-          return <Text textStyle={globalStyles.name}>Hello {this.props.name}</Text>;
+          return <Text textStyle={globalStyles.text}>Hi {this.props.name}</Text>;
         }
       });
     `,
     errors: [{
-      message: 'Unused style detected: styles.name',
-    }],
-  }, {
-    code: `
-      const getStyles = () => {
-        return StyleSheet.create({
-          name: {}
-        })
-      } 
-      const Hello = React.createClass({
-        render: function() {
-          const globalStyles = getStyles();
-          return <Text textStyle={globalStyles.name}>Hello {this.props.name}</Text>;
-        }
-      });
-    `,
-    errors: [{
-      message: 'Unused style detected: undefined.name',
+      message: 'Unused style detected: undefined.text',
     }],
   }, {
     code: `
