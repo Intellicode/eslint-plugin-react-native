@@ -1,8 +1,6 @@
+# ESLint plugin for React Native
 
-ESLint plugin for React Native
-==============================
-
-# Project update
+## Project update
 
 Dear users, first of all, thanks for using the plugin! At the moment development activity is low, I've personally not worked with React Native for many years and have little time to continue updating the plugin. I'll do my best to update the plugin to ensure compatibility with new eslint versions, but unfortunately I do not have time to asses new features/pull requests. Thanks for your understanding!
 
@@ -12,28 +10,27 @@ Dear users, first of all, thanks for using the plugin! At the moment development
 
 React Native specific linting rules for ESLint. This repository is structured like  (and contains code from) the excellent [eslint-plugin-react](http://github.com/yannickcr/eslint-plugin-react).
 
-# Installation
+## Installation
 
 Install [ESLint](https://www.github.com/eslint/eslint) either locally or globally.
 
 ```sh
-$ npm install --save-dev eslint
+npm install --save-dev eslint
 ```
 
 To make most use of this plugin, its recommended to install [eslint-plugin-react](http://github.com/yannickcr/eslint-plugin-react) in addition to [ESLint](https://www.github.com/eslint/eslint). If you installed `ESLint` globally, you have to install eslint-plugin-react globally too. Otherwise, install it locally.
 
 ```sh
-$ npm install --save-dev eslint-plugin-react
+npm install --save-dev eslint-plugin-react
 ```
 
 Similarly, install eslint-plugin-react-native
 
-
 ```sh
-$ npm install --save-dev eslint-plugin-react-native
+npm install --save-dev eslint-plugin-react-native
 ```
 
-# Configuration
+## Configuration
 
 Add `plugins` section and specify ESLint-plugin-React (optional) and ESLint-plugin-react-native as a plugin.
 
@@ -91,15 +88,25 @@ Finally, enable all of the rules that you would like to use.
 }
 ```
 
-# List of supported rules
+## List of supported rules
 
-* [no-unused-styles](docs/rules/no-unused-styles.md): Detect `StyleSheet` rules which are not used in your React components
-* [sort-styles](docs/rules/sort-styles.md): Require style definitions to be sorted alphabetically
-* [split-platform-components](docs/rules/split-platform-components.md): Enforce using platform specific filenames when necessary
-* [no-inline-styles](docs/rules/no-inline-styles.md): Detect JSX components with inline styles that contain literal values
-* [no-color-literals](docs/rules/no-color-literals.md): Detect `StyleSheet` rules and inline styles containing color literals instead of variables
-* [no-raw-text](docs/rules/no-raw-text.md): Detect raw text outside of `Text`  component
-* [no-single-element-style-arrays](docs/rules/no-single-element-style-arrays.md): No style arrays that have 1 element only `<View style={[{height: 10}]}/>`
+<!-- begin auto-generated rules list -->
+
+💼 [Configurations](https://github.com/Intellicode/eslint-plugin-react-native#shareable-configurations) enabled in.\
+🌐 Set in the `all` [configuration](https://github.com/Intellicode/eslint-plugin-react-native#shareable-configurations).\
+🔧 Automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/user-guide/command-line-interface#--fix).
+
+| Name                                                                           | Description                                                                                                          | 💼 | 🔧 |
+| :----------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------- | :- | :- |
+| [no-color-literals](docs/rules/no-color-literals.md)                           | Detect `StyleSheet` rules and inline styles containing color literals instead of variables                           | 🌐 |    |
+| [no-inline-styles](docs/rules/no-inline-styles.md)                             | Detect JSX components with inline styles that contain literal values                                                 | 🌐 |    |
+| [no-raw-text](docs/rules/no-raw-text.md)                                       | Detect raw text outside of `Text` component                                                                          | 🌐 |    |
+| [no-single-element-style-arrays](docs/rules/no-single-element-style-arrays.md) | Disallow single element style arrays. These cause unnecessary re-renders as the identity of the array always changes | 🌐 | 🔧 |
+| [no-unused-styles](docs/rules/no-unused-styles.md)                             | Detect `StyleSheet` rules which are not used in your React components                                                | 🌐 |    |
+| [sort-styles](docs/rules/sort-styles.md)                                       | Require style definitions to be sorted alphabetically                                                                | 🌐 | 🔧 |
+| [split-platform-components](docs/rules/split-platform-components.md)           | Enforce using platform specific filenames when necessary                                                             | 🌐 | 🔧 |
+
+<!-- end auto-generated rules list -->
 
 [npm-url]: https://npmjs.org/package/eslint-plugin-react-native
 [npm-image]: http://img.shields.io/npm/v/eslint-plugin-react-native.svg?style=flat-square
@@ -115,9 +122,10 @@ Finally, enable all of the rules that you would like to use.
 
 [bettercode-image]: https://bettercodehub.com/edge/badge/Intellicode/eslint-plugin-react-native
 [bettercode-url]: https://bettercodehub.com
-# Shareable configurations
 
-## All
+## Shareable configurations
+
+### All
 
 This plugin also exports an `all` configuration that includes every available rule.
 

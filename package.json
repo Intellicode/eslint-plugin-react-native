@@ -6,9 +6,12 @@
   "main": "index.js",
   "scripts": {
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "lint": "eslint ./lib && eslint ./tests",
-    "test": "npm run lint && npm run unit-test",
-    "unit-test": "nyc --silent --reporter=text mocha tests/**/*.js"
+    "lint": "npm-run-all \"lint:*\"",
+    "lint:eslint-docs": "npm-run-all \"update:eslint-docs -- --check\"",
+    "lint:js": "eslint ./lib && eslint ./tests",
+    "test": "npm-run-all lint unit-test",
+    "unit-test": "nyc --silent --reporter=text mocha tests/**/*.js",
+    "update:eslint-docs": "eslint-doc-generator --url-configs \"https://github.com/Intellicode/eslint-plugin-react-native#shareable-configurations\""
   },
   "files": [
     "LICENSE",
@@ -23,15 +26,17 @@
   "homepage": "https://github.com/intellicode/eslint-plugin-react-native",
   "bugs": "https://github.com/intellicode/eslint-plugin-react-native/issues",
   "devDependencies": {
-    "@typescript-eslint/parser": "^5.3.1",
     "@babel/eslint-parser": "^7.16.3",
+    "@typescript-eslint/parser": "^5.3.1",
     "coveralls": "^3.1.1",
     "eslint": "^8.4.0",
     "eslint-config-airbnb": "^19.0.2",
+    "eslint-doc-generator": "^1.4.3",
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.26.1",
     "mocha": "^9.1.3",
+    "npm-run-all": "^4.1.5",
     "nyc": "^15.1.0",
     "typescript": "^4.4.4"
   },

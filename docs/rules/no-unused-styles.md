@@ -1,4 +1,9 @@
-# Detect unused StyleSheet rules in React components
+# Detect `StyleSheet` rules which are not used in your React components (`react-native/no-unused-styles`)
+
+💼 This rule is enabled in the 🌐 `all` [config](https://github.com/Intellicode/eslint-plugin-react-native#shareable-configurations).
+
+<!-- end auto-generated rule header -->
+
 When working on a component over a longer period of time, you could end up with unused StyleSheet rules that slipped in over time but are forgotten as you continue to improve your UX/UI design.
 
 ## Rule Details
@@ -18,6 +23,7 @@ const Hello = React.createClass({
 ```
 
 The following patterns are not considered warnings:
+
 ```js
 const styles = StyleSheet.create({
   name: {}
@@ -29,6 +35,7 @@ const Hello = React.createClass({
   }
 });
 ```
+
 The most common case.
 
 ```js
@@ -44,6 +51,7 @@ const Hello = React.createClass({
   }
 });
 ```
+
 Style rules referenced in a Style array are marked as used.
 
 ```js
@@ -57,6 +65,7 @@ const Hello = React.createClass({
   }
 });
 ```
+
 Style rules referenced in a conditional and logical expressions are marked as used.
 
 ```js
@@ -95,6 +104,7 @@ const Hello = React.createClass({
   }
 });
 ```
+
 Rules are also marked as used when they are used in tags that contain the word `style`.
 
 ```js
@@ -113,6 +123,7 @@ const Welcome = React.createClass({
   }
 });
 ```
+
 Usage is tracked over multiple components in the same file.
 
 ```js
@@ -120,4 +131,5 @@ const styles = StyleSheet.create({
   text: {}
 });
 ```
+
 There should be at least one component, so centralized `StyleSheets` are not checked for unused rules.
