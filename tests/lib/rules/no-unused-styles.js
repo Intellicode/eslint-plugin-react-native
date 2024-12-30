@@ -33,6 +33,21 @@ const tests = {
     `,
   }, {
     code: `
+      const getStyles = () => {
+        const styles = StyleSheet.create({
+          name: {}
+        })
+        return styles;
+      } 
+      const Hello = React.createClass({
+        render: function() {
+          const styles = getStyles();
+          return <Text textStyle={styles.name}>Hello {this.props.name}</Text>;
+        }
+      });
+    `,
+  }, {
+    code: `
       const Hello = React.createClass({
         render: function() {
           return <Text textStyle={styles.name}>Hello {this.props.name}</Text>;
@@ -230,6 +245,23 @@ const tests = {
     `,
     errors: [{
       message: 'Unused style detected: styles.text',
+    }],
+  }, {
+    code: `
+      const getStyles = () => {
+        return OtherStyleSheet.create({
+          text: {}
+        })
+      } 
+      const Hi = React.createClass({
+        render: function() {
+          const globalStyles = getStyles();
+          return <Text textStyle={globalStyles.text}>Hi {this.props.name}</Text>;
+        }
+      });
+    `,
+    errors: [{
+      message: 'Unused style detected: undefined.text',
     }],
   }, {
     code: `
