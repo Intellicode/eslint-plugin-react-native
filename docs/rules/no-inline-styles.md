@@ -50,3 +50,9 @@ const Welcome = React.createClass({
   }
 });
 ```
+
+#### This rule has an object option:
+
+- "allowStylePropertiesLessThan" – allow style properties count less than a specific number. for e.g. `2` will allow `{fontSize: 15}` but not `{fontSize: 15, fontColor: 'white'}`
+
+
